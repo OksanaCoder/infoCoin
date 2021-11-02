@@ -11,3 +11,14 @@
 .logo {
     font-weight: 600;
 }
+.circle-user {
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}

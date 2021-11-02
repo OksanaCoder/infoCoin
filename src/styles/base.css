@@ -49,3 +49,7 @@ h1 {
 .btn-success:focus {
     box-shadow: none !important;
 }
+
+.navbar-expand .navbar-nav .dropdown-menu {
+    left: -117px;
+}
