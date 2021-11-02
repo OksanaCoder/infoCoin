@@ -23,5 +23,13 @@ h1 {
 .flex-column-align-start {
     display: flex;
     flex-direction: column;
-    
+}
+.flex-row-center-align {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.flex-end {
+    justify-content: flex-end;
+    display: flex;
 }
