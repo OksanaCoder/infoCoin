@@ -1,6 +1,6 @@
 .wrapper {
     background-color: var(--grey-color);
-    height: 100vh;
+    height: 100%;
     padding-top: 200px;
 }
 .info {

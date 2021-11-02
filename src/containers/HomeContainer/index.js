@@ -35,9 +35,9 @@ const HomeContainer = () => {
                 <img className="icon-small" src={arrowRight} alt="" />
               </Col>
             </Row>
-            {/* <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" /> */}
+            <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
 
-            <Swiper>
+            {/* <Swiper>
               <SwiperSlide>
                 <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
               </SwiperSlide>
@@ -45,7 +45,7 @@ const HomeContainer = () => {
                 <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
               </SwiperSlide>
         
-            </Swiper>
+            </Swiper> */}
 
             <Row className="flex-row-center-align mt-2">
               <Col lg={6} md={6} sm={6} xs={6}>
