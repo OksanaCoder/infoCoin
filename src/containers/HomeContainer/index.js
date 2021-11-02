@@ -40,6 +40,7 @@ const HomeContainer = () => {
                 <img src={share} alt="" className="icon-small ms-4" />
                 <img src={eye} alt="" className="icon-small ms-4" />
                 <img src={like} alt="" className="icon-small ms-4" />
+                
               </Col>
             </Row>
           </div>

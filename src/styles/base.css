@@ -33,3 +33,19 @@ h1 {
     justify-content: flex-end;
     display: flex;
 }
+
+.btn-check:active+.btn-success, .btn-check:checked+.btn-success, .btn-success.active, .btn-success:active, .show>.btn-success.dropdown-toggle {
+    background: none !important;
+    border: none;
+}
+.btn-success:hover {
+    background: none !important;
+    border: none !important;
+}
+.btn-success {
+    background: none !important;
+    border: none !important;
+}
+.btn-success:focus {
+    box-shadow: none !important;
+}
