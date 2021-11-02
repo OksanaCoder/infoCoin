@@ -8,6 +8,10 @@ import speaker from "@assets/icons/audio.svg";
 import share from "@assets/icons/share.svg";
 import eye from "@assets/icons/eye.svg";
 import like from "@assets/icons/heart.svg";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.min.css'
+import 'swiper/swiper.min.css'
+
 
 const HomeContainer = () => {
   return (
@@ -31,16 +35,26 @@ const HomeContainer = () => {
                 <img className="icon-small" src={arrowRight} alt="" />
               </Col>
             </Row>
-            <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
+            {/* <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" /> */}
+
+            <Swiper>
+              <SwiperSlide>
+                <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <ReactPlayer url="https://www.youtube.com/watch?v=ysz5S6PUM-U" />
+              </SwiperSlide>
+        
+            </Swiper>
+
             <Row className="flex-row-center-align mt-2">
               <Col lg={6} md={6} sm={6} xs={6}>
                 <img src={speaker} alt="" />
               </Col>
-              <Col lg={6} md={6} sm={6} xs={6} className='flex-end'>
+              <Col lg={6} md={6} sm={6} xs={6} className="flex-end">
                 <img src={share} alt="" className="icon-small ms-4" />
                 <img src={eye} alt="" className="icon-small ms-4" />
                 <img src={like} alt="" className="icon-small ms-4" />
-                
               </Col>
             </Row>
           </div>
