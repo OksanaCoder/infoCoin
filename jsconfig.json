@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "baseUrl": "src",
+    "jsx": "react",
+    "paths": {
+      "@styles/*": ["styles/*"],
+      "@components/*": ["components/*"],
+      "@assets/*": ["assets/*"],
+      "@containers/*" : ["containers/*"],
+      "@pages/*" : ["pages/*"]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
