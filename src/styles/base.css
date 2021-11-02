@@ -1,0 +1,27 @@
+/* main colors */
+:root {
+    --primary-color:  #FA8200;
+    --grey-color: #F1F1F1;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 30px !important;
+}
+
+.icon-small {
+    width: 40px;
+}
+.flex-row-center {
+   display: flex;
+   justify-content: center;
+}
+.flex-column-align-start {
+    display: flex;
+    flex-direction: column;
+    
+}

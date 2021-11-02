@@ -9,7 +9,8 @@
       "@components/*": ["components/*"],
       "@assets/*": ["assets/*"],
       "@containers/*" : ["containers/*"],
-      "@pages/*" : ["pages/*"]
+      "@pages/*" : ["pages/*"],
+      "@fonts/*" : ["fonts/*"]
     }
   },
   "include": [

@@ -1,0 +1,7 @@
+<svg id="Group_2" data-name="Group 2" xmlns="http://www.w3.org/2000/svg" width="193" height="137" viewBox="0 0 193 137">
+  <g id="Rectangle_1" data-name="Rectangle 1" fill="none" stroke="#000" stroke-width="15">
+    <rect width="193" height="137" rx="10" stroke="none"/>
+    <rect x="7.5" y="7.5" width="178" height="122" rx="2.5" fill="none"/>
+  </g>
+  <path id="Icon_awesome-plus" data-name="Icon awesome-plus" d="M69.293,36.316H45.307V12.33A5.331,5.331,0,0,0,39.977,7h-5.33a5.331,5.331,0,0,0-5.33,5.33V36.316H5.33A5.331,5.331,0,0,0,0,41.646v5.33a5.331,5.331,0,0,0,5.33,5.33H29.316V76.293a5.331,5.331,0,0,0,5.33,5.33h5.33a5.331,5.331,0,0,0,5.33-5.33V52.307H69.293a5.331,5.331,0,0,0,5.33-5.33v-5.33A5.331,5.331,0,0,0,69.293,36.316Z" transform="translate(59.106 24.189)"/>
+</svg>
