@@ -72,8 +72,8 @@ const HeaderContainer = () => {
                   U
                  </div>
                    <span>@User122434</span>
-                   <span>Баланс IC <img src={coins} alt=""/>
-                     </span></Dropdown.Item>
+                   <p className="m-0">Баланс IC <img src={coins} alt=""/>
+                     </p></Dropdown.Item>
                   <Dropdown.Item href="#/action-2">
                   <img src={wallet} className="me-3" alt=""/>
                     Кошелек
