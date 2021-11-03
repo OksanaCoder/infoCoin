@@ -64,7 +64,7 @@ const LoginPage = ({isLoadingAuth, loginAction, pendingAction, addNotificationAc
                                     variant="contained"
                                     color="primary"
                                     onClick={handleSubmit}
-                                    className='btn-primary'
+                                    className='btn-prime'
                                 >
                                     Войти
                                 </Button>

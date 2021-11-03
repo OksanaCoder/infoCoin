@@ -160,7 +160,7 @@ const RegisterPage = ({
                                     type="submit"
                                     color="primary"
                                     variant="contained"
-                                    className='btn-primary'
+                                    className='btn-prime'
                                     // disabled={isSubmitting || isLoadingAuth}
                                     onClick={handleSubmit}
                                 >
