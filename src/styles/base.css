@@ -20,6 +20,12 @@ h1 {
    display: flex;
    justify-content: center;
 }
+.flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+ }
 .flex-column-align-start {
     display: flex;
     flex-direction: column;
@@ -52,4 +58,32 @@ h1 {
 
 .navbar-expand .navbar-nav .dropdown-menu {
     left: -117px;
+}
+.text-decoration-none {
+    text-decoration: none !important;
+}
+.modal-header {
+    border-bottom: none !important;
+}
+.modal-footer {
+    border-top: none !important;
+    justify-content: space-between !important;
+}
+.btn-simple {
+    border: none !important;
+    background: none !important;
+}
+.btn-simple:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.MuiRadio-colorSecondary.Mui-checked {
+    color: #FA8200 !important;
+}
+.MuiTabs-flexContainer {
+    justify-content: center !important;
+}
+.btn-primary{ 
+    background-color: var(--primary-color) !important;
+    border-radius: 50px !important;
 }

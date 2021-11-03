@@ -5,6 +5,7 @@ import LoginPage from '@pages/LoginPage';
 import RegisterPage from '@pages/RegisterPage';
 import HomeContainer from '@containers/HomeContainer';
 import BaseContainer from '@containers/BaseContainer';
+import AuthContainer from "@containers/AuthContainer/index.js";
 
 const AppRouter = () => {
 
@@ -13,7 +14,14 @@ const AppRouter = () => {
         <>
             <BrowserRouter>
                 <Switch>
-                    <PublicRoute
+                <PublicRoute
+                        exact
+                        path="/auth"
+                        component={() => (
+                            <AuthContainer/>
+                        )}
+                    />
+                    {/* <PublicRoute
                         exact
                         path="/login"
                         component={() => (
@@ -26,7 +34,7 @@ const AppRouter = () => {
                         component={() => (
                             <RegisterPage/>
                         )}
-                    />         
+                    />          */}
 
                     <PrivateRoute
                         exact
