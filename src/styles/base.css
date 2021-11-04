@@ -119,3 +119,12 @@ h2 {
     width: 30px;
     height: 30px;
 }
+.rh5v-Volume_slider {
+    display: none;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    height: 56px;
+    background-color: #000;
+    transform: rotate(90deg);
+}
