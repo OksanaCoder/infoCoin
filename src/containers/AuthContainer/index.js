@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import RegisterPage from "@pages/RegisterPage";
 import LoginPage from "@pages/LoginPage";
 import logo from "@assets/icons/logo.svg";
+import "@styles/components/AuthContainer.css"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -45,8 +46,8 @@ const AuthContainer = () => {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Зарегестрироваться" />
-          <Tab label="Войти" />
+          <Tab label="Зарегестрироваться" className='tab-register' />
+          <Tab label="Войти" className='tab-login'/>
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} className="text-center">

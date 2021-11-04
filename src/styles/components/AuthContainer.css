@@ -1,0 +1,15 @@
+@import '../base.css';
+
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    background: var(--primary-color) !important;
+    padding: 20px !important;
+    border-radius: 10px 10px 0 0 !important;
+color: #fff !important;
+}
+.css-1aquho2-MuiTabs-indicator {
+    background: var(--primary-color) !important;
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root. {
+    background: var(--secondary-color) !important;
+
+}

@@ -8,6 +8,7 @@ import speaker from "@assets/icons/audio.svg";
 import share from "@assets/icons/share.svg";
 import eye from "@assets/icons/eye.svg";
 import like from "@assets/icons/heart.svg";
+import video from "@assets/video/test.mov";
 import {
   FormControl,
   Radio,
@@ -15,6 +16,8 @@ import {
   FormLabel,
   FormControlLabel,
 } from "@material-ui/core";
+import { DefaultPlayer as Video } from 'react-html5video';
+import 'react-html5video/dist/styles.css';
 
 const HomeContainer = () => {
   const [modalShow, setModalShow] = React.useState(false);
@@ -40,10 +43,19 @@ const HomeContainer = () => {
                 <img className="icon-small" src={arrowRight} alt="" />
               </Col>
             </Row>
-            <ReactPlayer
+            {/* <ReactPlayer
               // playing
               url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
-            />
+            /> */}
+             <Video autoPlay loop muted
+            controls={['PlayPause', 'Seek', 'Time', 'Volume', 'Fullscreen']}
+            poster="https://eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
+            onCanPlayThrough={() => {
+                // Do stuff
+            }}>
+            <source src={video} type="video/MP4" />
+            {/* <track label="English" kind="subtitles" srcLang="en" src="http://source.vtt" default /> */}
+        </Video>
             <Row className="flex-row-center-align mt-2">
               <Col lg={6} md={6} sm={6} xs={6}>
                 <img src={speaker} alt="" />
