@@ -194,3 +194,17 @@ h2 {
   .MuiOutlinedInput-input {
     padding: 8px 20px !important;
 }
+.MuiInputLabel-formControl {
+    position: absolute;
+    left: 0 !important;
+    top: -42px !important;
+}
+.MuiOutlinedInput-notchedOutline {
+    border: 1px solid #000 !important;
+}
+.MuiInputLabel-root {
+    color: #000 !important;
+}
+.MuiFormControl-marginNormal {
+    margin-top: 26px !important;
+}

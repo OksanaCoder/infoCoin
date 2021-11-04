@@ -45,6 +45,7 @@ const LoginPage = ({isLoadingAuth, loginAction, pendingAction, addNotificationAc
                                 errorText={errors.email && touched.email && errors.email}
                                 value={values.email}
                                 onChange={handleChange}
+                                shrink='false'
                             />
                             <Input
                                

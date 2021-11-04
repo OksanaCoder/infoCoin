@@ -16,6 +16,7 @@ const Input = ({
   ...input
 }) => (
   <TextField
+    InputLabelProps={{ shrink: false }}
     variant={variant}
     label={label}
     name={name}
