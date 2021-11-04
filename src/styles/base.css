@@ -140,6 +140,9 @@ h2 {
         height: 400px;
     }
 }
+.rh5v-PlayPause_button:hover {
+    display: none;
+}
 
 
 
@@ -184,3 +187,10 @@ h2 {
   .text-left {
       text-align: left;
   }
+
+  .MuiOutlinedInput-root {
+      border-radius: 50px !important;
+  }
+  .MuiOutlinedInput-input {
+    padding: 8px 20px !important;
+}

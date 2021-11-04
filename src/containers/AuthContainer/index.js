@@ -50,10 +50,10 @@ const AuthContainer = () => {
           <Tab label="Войти" className='tab-login'/>
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0} className="text-center">
+      <TabPanel value={value} index={0} className="text-center tab-box">
         <RegisterPage />
       </TabPanel>
-      <TabPanel value={value} index={1} className="text-center">
+      <TabPanel value={value} index={1} className="text-center tab-box">
         <LoginPage />
       </TabPanel>
     </>

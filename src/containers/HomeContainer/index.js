@@ -148,7 +148,7 @@ const HomeContainer = () => {
               
                 <div className="me-5 flex-row-center-align">
                 <img src='https://www.zvuki.ru/images/photo/51/51227.jpg' alt="" className="profile-icon"/>
-                <div>
+                <div className="text-left">
                   <h2 className="title">Beyonce</h2>
                   <h6 className="hashtag">#beyonce#singer#usa#music</h6>
                   </div>
@@ -156,7 +156,7 @@ const HomeContainer = () => {
                 <img className="icon-small" src={arrowRight} alt="" />
               </Col>
             </Row>
-      <Video autoPlay muted  loop
+      <Video autoPlay muted  loop oncanplay="muted=true"
              controls={['PlayPause', 'Volume']}
             // poster="https://eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
             onCanPlayThrough={() => {
