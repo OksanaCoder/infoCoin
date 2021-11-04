@@ -128,3 +128,10 @@ h2 {
     background-color: #000;
     transform: rotate(90deg);
 }
+
+.rh5v-DefaultPlayer_component:hover .rh5v-DefaultPlayer_controls {
+    opacity: 1;
+}
+.rh5v-DefaultPlayer_controls {
+    opacity : 1;
+}
