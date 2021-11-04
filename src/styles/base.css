@@ -108,3 +108,14 @@ h2 {
 .rh5v-DefaultPlayer_component {
     background: none;
 }
+.rh5v-Volume_button {
+    position: absolute;
+    top: 30px;
+    left: -32px;
+}
+.rh5v-Volume_icon {
+    padding: 0;
+    fill: #000;
+    width: 30px;
+    height: 30px;
+}

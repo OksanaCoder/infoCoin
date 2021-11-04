@@ -48,7 +48,7 @@ const HomeContainer = () => {
             </Row>
       
            <Video autoPlay loop
-             controls={['PlayPause']}
+             controls={['PlayPause', 'Volume']}
             // poster="https://eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
             onCanPlayThrough={() => {
                 // Do stuff
@@ -60,7 +60,7 @@ const HomeContainer = () => {
    
             <Row className="flex-row-center-align mt-2">
               <Col lg={6} md={6} sm={6} xs={6}>
-                <img src={speaker} alt="" />
+                {/* <img src={speaker} alt="" /> */}
               </Col>
               <Col lg={6} md={6} sm={6} xs={6} className="flex-end">
                 <img src={share} alt="" className="icon-small ms-4" />
