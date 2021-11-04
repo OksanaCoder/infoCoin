@@ -35,8 +35,8 @@ const AuthContainer = () => {
     setValue(newValue);
   };
   return (
-    <>
-      <div className="flex-col-center my-4">
+    <div className='wrapper-grey'>
+      <div className="flex-col-center py-4">
         <img src={logo} alt="logo" style={{margin: 'auto'}} width="50px" />
         <h1 className="logo text-center">INFOCOIN</h1>
       </div>
@@ -56,7 +56,7 @@ const AuthContainer = () => {
       <TabPanel value={value} index={1} className="text-center tab-box">
         <LoginPage />
       </TabPanel>
-    </>
+    </div>
   );
 };
 

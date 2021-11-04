@@ -150,7 +150,7 @@ const RegisterPage = ({
                                         alignItems: "center",
                                     }}
                                 >
-                                      <FormControlLabel className='my-4' control={<Checkbox className='me-2' />} label=" Я принимаю условия пользования и конфиденциальности" />
+                                      <FormControlLabel className='my-4 text-left' control={<Checkbox className='me-2' />} label=" Я принимаю условия пользования и конфиденциальности" />
 
                                 
 
