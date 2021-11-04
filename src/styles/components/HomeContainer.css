@@ -6,3 +6,10 @@
 .info {
     margin-bottom: 15px;
 }
+.profile-icon {
+    width: 65px;
+    border-radius: 50%;
+    height:65px;
+    object-fit: cover;
+    margin-right: 15px;
+}

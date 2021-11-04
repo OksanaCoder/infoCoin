@@ -13,6 +13,9 @@ body {
 h1 {
     font-size: 20px !important;
 }
+h2 {
+    font-size: 1.8rem;
+}
 
 .icon-small {
     width: 25px;
@@ -87,4 +90,21 @@ h1 {
 .btn-prime{ 
     background-color: var(--primary-color) !important;
     border-radius: 50px !important;
+}
+
+.rh5v-DefaultPlayer_controls {
+  background: none;
+}
+.rh5v-PlayPause_icon {
+    display: none;
+}
+.rh5v-Overlay_inner {
+    display: none;
+}
+.rh5v-DefaultPlayer_component, 
+.rh5v-DefaultPlayer_video {
+    border-radius : 10px;
+}
+.rh5v-DefaultPlayer_component {
+    background: none;
 }
