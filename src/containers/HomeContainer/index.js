@@ -47,7 +47,7 @@ const HomeContainer = () => {
               </Col>
             </Row>
       
-           <Video autoPlay loop
+           <Video autoPlay muted  loop
              controls={['PlayPause', 'Volume']}
             // poster="https://eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
             onCanPlayThrough={() => {
