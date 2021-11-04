@@ -135,3 +135,8 @@ h2 {
 .rh5v-DefaultPlayer_controls {
     opacity : 1;
 }
+@media screen and (min-device-width: 1200px) {
+    .rh5v-DefaultPlayer_video {
+        height: 400px;
+    }
+}
