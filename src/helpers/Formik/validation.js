@@ -16,7 +16,7 @@ const SignupSchema = () =>
       .max(100, 'max', {  num: 100 })
       .oneOf([Yup.ref('password'), null], 'password do not match')
       .required('required'),
-      name: Yup.string()
+    name: Yup.string()
       .min(1, 'min', { num: 1 })
       .max(16, 'max', {  num: 16 })
       .required('required'),

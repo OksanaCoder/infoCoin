@@ -17,6 +17,7 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
+      className='form-wrapper'
       {...other}
     >
       {value === index && (
@@ -35,11 +36,12 @@ const AuthContainer = () => {
     setValue(newValue);
   };
   return (
-    <div className='wrapper-grey'>
+    <div className='auth-wrapper'>
       <div className="flex-col-center py-4">
         <img src={logo} alt="logo" style={{margin: 'auto'}} width="50px" />
         <h1 className="logo text-center">INFOCOIN</h1>
       </div>
+     
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
@@ -56,6 +58,7 @@ const AuthContainer = () => {
       <TabPanel value={value} index={1} className="text-center tab-box">
         <LoginPage />
       </TabPanel>
+
     </div>
   );
 };

@@ -1,38 +1,63 @@
-@import '../base.css';
+@import "@styles/base.css";
 
+.auth-wrapper {
+  background: #f1f1f1;
+  height: 100vh;
+}
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-    background: var(--primary-color) !important;
-    padding: 20px !important;
-    border-radius: 10px 10px 0 0 !important;
-    color: #fff !important;
-    /* width: 50% !important; */
+  background: var(--primary-color) !important;
+  padding: 20px !important;
+  border-radius: 10px 10px 0 0 !important;
+  color: #fff !important;
+  /* width: 50% !important; */
 }
 .css-1aquho2-MuiTabs-indicator {
-    background: var(--primary-color) !important;
+  background: var(--primary-color) !important;
 }
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root. {
-    background: var(--secondary-color) !important;
-    /* width: 50% !important; */
-
+  background: var(--secondary-color) !important;
+  /* width: 50% !important; */
 }
 .css-1ujnqem-MuiTabs-root {
-    width: 460px !important;
-    margin: auto !important;
+  width: 460px !important;
+  margin: auto !important;
 }
 
 .tab-box {
-    width: 50% !important;
-    margin: auto !important;
+  width: 500px !important;
+  margin: auto !important;
 }
-.wrapper-grey {
-   background: var(--grey-color: #F1F1F1) !important;
+@media screen and (max-width: 600px) {
+  .tab-box {
+    width: 90% !important;
+  }
+  .css-1ujnqem-MuiTabs-root {
+    width: 90% !important;
+  }
+  .tab-register,
+  .tab-login {
+    font-size: 10px !important;
+  }
 }
+@media screen and (min-width: 700px) {
+  .css-1ujnqem-MuiTabs-root {
+    width: 500px !important;
+  }
+  .tab-box {
+    width: 500px !important;
+  }
+}
+
 .css-1gsv261 {
-    border: none !important;
+  border: none !important;
 }
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
-    background: #F5B978 !important;
-    color: #fff !important;
-    border-radius: 10px 10px 0 0 !important;
-    padding: 20px !important;
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
+  background: #f5b978 !important;
+  color: #fff !important;
+  border-radius: 10px 10px 0 0 !important;
+  padding: 20px !important;
+}
+.css-19kzrtu {
+  background: #fff;
+  border-radius: 0 0 10px 10px !important;
 }

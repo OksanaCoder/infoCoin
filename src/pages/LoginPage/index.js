@@ -36,8 +36,8 @@ const LoginPage = ({isLoadingAuth, loginAction, pendingAction, addNotificationAc
                     {({values, errors, touched, handleChange, handleSubmit, isSubmitting}) => (
                         <form>
                             <Input
-                
-                                label='email'
+                                placeholder='email'
+                                label='Email'
                                 type="email"
                                 name="email"
                                 variant="outlined"
@@ -48,8 +48,8 @@ const LoginPage = ({isLoadingAuth, loginAction, pendingAction, addNotificationAc
                                 shrink='false'
                             />
                             <Input
-                               
-                                label='password'
+                                placeholder="**********"
+                                label='Пароль'
                                 type="password"
                                 name="password"
                                 variant="outlined"
@@ -65,7 +65,7 @@ const LoginPage = ({isLoadingAuth, loginAction, pendingAction, addNotificationAc
                                     variant="contained"
                                     color="primary"
                                     onClick={handleSubmit}
-                                    className='btn-prime'
+                                    className='btn-prime my-3'
                                 >
                                     Войти
                                 </Button>

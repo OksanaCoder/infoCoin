@@ -84,9 +84,9 @@ h2 {
 .MuiRadio-colorSecondary.Mui-checked {
     color: #FA8200 !important;
 }
-.MuiTabs-flexContainer {
+/* .MuiTabs-flexContainer {
     justify-content: center !important;
-}
+} */
 .btn-prime{ 
     background-color: var(--primary-color) !important;
     border-radius: 50px !important;
@@ -134,6 +134,10 @@ h2 {
 }
 .rh5v-DefaultPlayer_controls {
     opacity : 1;
+}
+.tab-register, 
+.tab-login {
+    width: 50%;
 }
 @media screen and (min-device-width: 1200px) {
     .rh5v-DefaultPlayer_video {
@@ -200,4 +204,5 @@ h2 {
 }
 .MuiFormControl-marginNormal {
     margin-top: 26px !important;
+    margin-bottom: 10px !important;
 }
