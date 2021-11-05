@@ -1,11 +1,10 @@
 import React from "react";
 import {BrowserRouter, Switch, Redirect} from "react-router-dom";
 import { PublicRoute, PrivateRoute } from "./Layout.js";
-import LoginPage from '@pages/LoginPage';
-import RegisterPage from '@pages/RegisterPage';
 import HomeContainer from '@containers/HomeContainer';
 import BaseContainer from '@containers/BaseContainer';
 import AuthContainer from "@containers/AuthContainer/index.js";
+import History from "components/History";
 
 const AppRouter = () => {
 
@@ -35,7 +34,15 @@ const AppRouter = () => {
                             <RegisterPage/>
                         )}
                     />          */}
-
+                    <PrivateRoute
+                        exact
+                        path="/history"
+                        component={() => (
+                            <BaseContainer>
+                                <History />
+                            </BaseContainer>
+                        )}
+                    />
                     <PrivateRoute
                         exact
                         path={["/"]}

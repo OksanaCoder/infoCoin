@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
+import {Link} from 'react-router-dom'
 import logo from "@assets/icons/logo.svg";
 import compass from "@assets/icons/compass.svg";
 import dropdown from "@assets/icons/burger.svg";
@@ -39,9 +40,13 @@ const HeaderContainer = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
+                <Link to="/history" className='text-decoration-none'>
                   <Dropdown.Item href="#/action-1">
+                  
                     <img src={history} className="me-3" alt=""/>
-                    История</Dropdown.Item>
+                    История
+                    </Dropdown.Item>
+                    </Link>
                   <Dropdown.Item href="#/action-2">
                   <img src={category} className="me-3" alt=""/>
                     Категория
