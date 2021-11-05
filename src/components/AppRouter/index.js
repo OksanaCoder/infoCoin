@@ -5,6 +5,7 @@ import HomeContainer from '@containers/HomeContainer';
 import BaseContainer from '@containers/BaseContainer';
 import AuthContainer from "@containers/AuthContainer/index.js";
 import History from "components/History";
+import Categories from "@components/Categories/index.js";
 
 const AppRouter = () => {
 
@@ -40,6 +41,15 @@ const AppRouter = () => {
                         component={() => (
                             <BaseContainer>
                                 <History />
+                            </BaseContainer>
+                        )}
+                    />
+                      <PrivateRoute
+                        exact
+                        path="/categories"
+                        component={() => (
+                            <BaseContainer>
+                                <Categories />
                             </BaseContainer>
                         )}
                     />

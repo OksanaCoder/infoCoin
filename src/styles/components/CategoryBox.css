@@ -1,0 +1,12 @@
+.category-box {
+    padding: 40px 20px;
+    border-radius: 20px;
+    background: #fff;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.category-box h6 {
+    margin: 0;
+    text-align: center;
+}

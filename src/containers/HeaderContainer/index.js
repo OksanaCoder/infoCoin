@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 import logo from "@assets/icons/logo.svg";
 import compass from "@assets/icons/compass.svg";
 import dropdown from "@assets/icons/burger.svg";
@@ -23,12 +23,14 @@ const HeaderContainer = () => {
     <>
       <Navbar className="navbarGrey">
         <Container>
-          <Navbar.Brand to="/">
-            <h1 className="logo">
-              <img src={logo} alt="logo" className="me-2" />
-              INFOCOIN
-            </h1>
-          </Navbar.Brand>
+          <Link to="/" className="text-decoration-none d-flex">
+            <Navbar.Brand to="/">
+              <h1 className="logo">
+                <img src={logo} alt="logo" className="me-2" />
+                INFOCOIN
+              </h1>
+            </Navbar.Brand>
+          </Link>
           <Nav className="ml-auto flex-row-center-align">
             <Nav.Link>
               <img src={compass} className="icon-small" alt="" />
@@ -40,71 +42,77 @@ const HeaderContainer = () => {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                <Link to="/history" className='text-decoration-none'>
-                  <Dropdown.Item href="#/action-1">
-                  
-                    <img src={history} className="me-3" alt=""/>
-                    История
+                  <Link to="/history" className="text-decoration-none">
+                    <Dropdown.Item href="#/action-1">
+                      <img src={history} className="me-3" alt="" />
+                      История
                     </Dropdown.Item>
-                    </Link>
-                  <Dropdown.Item href="#/action-2">
-                  <img src={category} className="me-3" alt=""/>
-                    Категория
-                  </Dropdown.Item>
+                  </Link>
+                  <Link to="/categories" className="text-decoration-none d-flex">
+                    <Dropdown.Item href="#/action-2">
+                      <img src={category} className="me-3" alt="" />
+                      Категория
+                    </Dropdown.Item>
+                  </Link>
                   <Dropdown.Item href="#/action-3">
-                  <img src={play} className="me-3" alt=""/>
+                    <img src={play} className="me-3" alt="" />
                     Общий Плейлист
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-3">
-                  <img src={add} className="me-3" alt=""/>
+                    <img src={add} className="me-3" alt="" />
                     Мой Плейлист
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Nav.Link>
             <Nav.Link>
-        
               <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic" className='d-flex'>
-                <div className="icon-small circle-user" alt="">
-                  U
-              </div>
+                <Dropdown.Toggle
+                  variant="success"
+                  id="dropdown-basic"
+                  className="d-flex"
+                >
+                  <div className="icon-small circle-user" alt="">
+                    U
+                  </div>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">
-                  <div className="icon-small circle-user" alt="">
-                  U
-                 </div>
-                   <span>@User122434</span>
-                   <p className="m-0">Баланс IC <img src={coins} alt=""/>
-                     </p></Dropdown.Item>
+                    <div className="icon-small circle-user" alt="">
+                      U
+                    </div>
+                    <span>@User122434</span>
+                    <p className="m-0">
+                      Баланс IC <img src={coins} alt="" />
+                    </p>
+                  </Dropdown.Item>
                   <Dropdown.Item href="#/action-2">
-                  <img src={wallet} className="me-3" alt=""/>
+                    <img src={wallet} className="me-3" alt="" />
                     Кошелек
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-3">
-                  <img src={user} className="me-3" alt=""/>
+                    <img src={user} className="me-3" alt="" />
                     Аккаунт
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-3">
-                  <img src={settings} className="me-3" alt=""/>
+                    <img src={settings} className="me-3" alt="" />
                     Настройки
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-3">
-                  <img src={web} className="me-3" alt=""/>
+                    <img src={web} className="me-3" alt="" />
                     Кеш и данные
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-3">
-                  <img src={headphones} className="me-3" alt=""/>
+                    <img src={headphones} className="me-3" alt="" />
                     Поддержка
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-3">
-                  <img src={info} className="me-3" alt=""/>
+                    <img src={info} className="me-3" alt="" />
                     Информация
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-3">
-                  <img src={doorOpen} className="me-3" alt=""/>
+                    <img src={doorOpen} className="me-3" alt="" />
                     Выход
                   </Dropdown.Item>
                 </Dropdown.Menu>
