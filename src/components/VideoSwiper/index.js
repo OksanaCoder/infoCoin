@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Modal, Button, Form } from "react-bootstrap";
 import "@styles/components/HomeContainer.css";
 import arrowRight from "@assets/icons/arrow-right.svg";
@@ -8,6 +8,7 @@ import eyeOrange from "@assets/icons/eye-orange.svg";
 import eye from "@assets/icons/eye.svg";
 import like from "@assets/icons/heart.svg";
 import video from "@assets/video/video.mp4";
+import video2 from "@assets/video/video-2.mp4";
 
 import {
   FormControl,
@@ -19,13 +20,12 @@ import { DefaultPlayer as Video } from "react-html5video";
 import "react-html5video/dist/styles.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
-
-
-// swiper core styles
 import "swiper/swiper.min.css";
-
+import VideoItem from '@components/VideoItem';
 
 const VideoSwiper = () => {
+  
+  
     const [modalShow, setModalShow] = React.useState(false);
     return (
         <Swiper
@@ -66,10 +66,10 @@ const VideoSwiper = () => {
               controls={["PlayPause", "Volume"]}
               // poster="https://eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
               onCanPlayThrough={() => {
-                // Do stuff
+      
               }}
             >
-              <source src={video} type="video/MP4" />
+              <source src={video} type="video/MP4" className="video"/>
 
               {/* <track label="English" kind="subtitles" srcLang="en" src="http://source.vtt" default /> */}
             </Video>
@@ -150,33 +150,19 @@ const VideoSwiper = () => {
               >
                 <div className="me-5 flex-row-center-align">
                   <img
-                    src="https://www.zvuki.ru/images/photo/51/51227.jpg"
+                    src="https://hiphop4real.com/wp-content/uploads/2018/07/Coolio.jpg"
                     alt=""
                     className="profile-icon"
                   />
                   <div className="text-left">
-                    <h2 className="title">Beyonce</h2>
-                    <h6 className="hashtag">#beyonce#singer#usa#music</h6>
+                    <h2 className="title">Coolio</h2>
+                    <h6 className="hashtag">#Coolio#singer#usa#music</h6>
                   </div>
                 </div>
                 <img className="icon-small" src={arrowRight} alt="" />
               </Col>
             </Row>
-            <Video
-              autoPlay
-              muted
-              loop
-              oncanplay="muted=true"
-              controls={["PlayPause", "Volume"]}
-              // poster="https://eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
-              onCanPlayThrough={() => {
-                // Do stuff
-              }}
-            >
-              <source src={video} type="video/MP4" />
-
-              {/* <track label="English" kind="subtitles" srcLang="en" src="http://source.vtt" default /> */}
-            </Video>
+             <VideoItem />
             <Row className="flex-row-center-align mt-2">
               <Col lg={6} md={6} sm={6} xs={6}>
                 {/* <img src={speaker} alt="" />  */}
