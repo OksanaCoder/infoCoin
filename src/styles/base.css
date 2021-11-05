@@ -206,3 +206,12 @@ h2 {
     margin-top: 26px !important;
     margin-bottom: 10px !important;
 }
+.navbar-expand {
+    z-index: 2 !important;
+}
+.dropdown-toggle::after {
+    display: none !important;
+}
+.modal-backdrop {
+    background: #000000ad !important;
+}

@@ -59,7 +59,7 @@ const HeaderContainer = () => {
             </Nav.Link>
             <Nav.Link>
         
-              <Dropdown >
+              <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic" className='d-flex'>
                 <div className="icon-small circle-user" alt="">
                   U
