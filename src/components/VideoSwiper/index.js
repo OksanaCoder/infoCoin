@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   // Container,
   Row,
@@ -8,6 +8,7 @@ import {
   Form,
 } from 'react-bootstrap';
 import '@styles/components/HomeContainer.css';
+import '@styles/components/VideoSwiper.css';
 import arrowRight from '@assets/icons/arrow-right.svg';
 import { ReactComponent as Share } from '@assets/icons/share.svg';
 import { ReactComponent as EyeOrange } from '@assets/icons/eye-orange.svg';
@@ -35,9 +36,13 @@ import { stories } from './stories';
 // import Stories from 'react-insta-stories';
 // import VideoItem from '@components/VideoItem';
 import Geetest from 'react-geetest';
+import './gt.js'
+// import ReCAPTCHA from "react-google-recaptcha";
 
+import { Link } from 'react-router-dom';
 
 const VideoSwiper = () => {
+
   const onSuccess = isSuccess => console.log(isSuccess);
 
   const [reportValue, setReportValue] = useState('complain');
@@ -81,6 +86,25 @@ const VideoSwiper = () => {
   };
 
   const [modalShow, setModalShow] = useState(false);
+  const playerRef = useRef();
+  const [playing, setPlaying] = useState(true)
+  const [randomSecond, setRandomSecond] = useState(0)
+  const [captchaConfirmed, setCaptchaConfirmed] = useState(false)
+
+  useEffect(() => {
+    if (playing || captchaConfirmed) {
+      return
+    }
+    checkCaptcha()
+  }, [playing])
+
+  const checkCaptcha = () => {
+    if (window.confirm('Are you a human?')) {
+      setCaptchaConfirmed(true)
+      setPlaying(true)
+    }
+  }
+
   // const [playing, setPlaying] = useState(false);
   // const videoRef = useRef(null);
 
@@ -93,14 +117,38 @@ const VideoSwiper = () => {
   //     setPlaying(true);
   //   }
   // };
+  // const startRandomizer = () => {
 
+  //   window.setTimeout( function(){
+  
+  //     window.alert("Hello World ");
+  //     // startRandomizer();
+  
+  //   },  5000); // From 10 to 110 secconds
+  
+  // } 
+  
+  // startRandomizer(); 
   return (
     <>
     <Geetest
-      gt="your-gt"
-      challenge="your-challenge"
+      gt="7f4efd47dc1fbf4a62dffecb6e5e4b98"
+      challenge="1c597815356b7a58b70f3dbcce505258"
       onSuccess={onSuccess}
     />
+     {/* <ReCAPTCHA
+    sitekey="6LckU0MdAAAAADWY8V4yEJlDd-ibaCxEw9g7LbtI"
+    onChange={onChange}
+  
+  /> */}
+  {/* <form onSubmit={() => { recaptchaRef.current.execute(); }}> */}
+    {/* <ReCAPTCHA
+      ref={recaptchaRef}
+      // size="invisible"
+      sitekey="6LckU0MdAAAAADWY8V4yEJlDd-ibaCxEw9g7LbtI"
+      onChange={onChange}
+    /> */}
+  {/* </form> */}
     <Swiper
       spaceBetween={50}
       loop={true}
@@ -110,7 +158,6 @@ const VideoSwiper = () => {
       allowSlideNext={false}
       allowSlidePrev={false}
       // noSwiping={true}
-  
     >
       {storiesData?.map(i => (
         <SwiperSlide key={i.id}>
@@ -125,14 +172,36 @@ const VideoSwiper = () => {
                   className="flex-row-center-align info"
                 >
                   <div className="flex-row-center-align">
-                    <img
-                      src="https:www.zvuki.ru/images/photo/51/51227.jpg"
-                      alt=""
-                      className="profile-icon"
-                    />
+                    <Link
+                      to={{
+                        pathname: `${'/profile'}/${i.author.id}`,
+                        state: i?.author,
+                      }}
+                    >
+                      <img
+                        src={i.author.avatar}
+                        alt="profile avatar"
+                        className="profile-icon"
+                      />
+                    </Link>
                     <div className="text-left">
-                      <h2 className="title">Beyonce</h2>
-                      <h6 className="hashtag">#beyonce#singer#usa#music</h6>
+                      <h2 className="title">
+                        <Link
+                          to={{
+                            pathname: `${'/profile'}/${i.author.id}`,
+                            state: i?.author,
+                          }}
+                        >
+                          {i.author.name}
+                        </Link>{' '}
+                      </h2>
+                      <ul className="hashtag">
+                        {i.author.tags.map(tag => (
+                          <li key={tag} className="hashtag-item">
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                   <img className="icon-small ms-2:" src={arrowRight} alt="" />
@@ -146,6 +215,18 @@ const VideoSwiper = () => {
                   loop={false}
                   controls={['PlayPause', 'Volume']}
                   // poster="https:eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
+                  ref={playerRef}
+                  playing={playing}
+                  onDuration={(duration) => {
+                    setRandomSecond(Math.floor(Math.random() * duration))
+                  }}
+                  onPlay={() => setPlaying(true)}
+                  onProgress={async (data) => {
+                    if (captchaConfirmed || data.playedSeconds < randomSecond) {
+                      return
+                    }
+                    setPlaying(false)
+                  }}
                   onCanPlayThrough={() => {
                     console.log('onCanPlayThrough');
                   }}
@@ -168,11 +249,23 @@ const VideoSwiper = () => {
                 </Video>
               ) : (
                 <Video
-                playsInline
+                  playsInline
                   autoPlay={false}
                   muted={true}
                   loop={false}
                   controls={['PlayPause', 'Volume']}
+                   ref={playerRef}
+      playing={playing}
+      onDuration={(duration) => {
+        setRandomSecond(Math.floor(Math.random() * duration))
+      }}
+      onPlay={() => setPlaying(true)}
+      onProgress={async (data) => {
+        if (captchaConfirmed || data.playedSeconds < randomSecond) {
+          return
+        }
+        setPlaying(false)
+      }}
                   // poster="https:eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
                 >
                   {/* <source src={i.url} type="video/MP4" className="video" /> */}
@@ -189,7 +282,7 @@ const VideoSwiper = () => {
                   {/* <img src={speaker} alt="" />  */}
                 </Col>
                 <Col lg={6} md={6} sm={6} xs={6} className="flex-end">
-                  <Share className="icon-small icon-hover me-4" />
+                  <Share className="icon-small icon-hover" />
                   <Eye
                     className="icon-small icon-hover ms-4"
                     onClick={() => setModalShow(true)}
@@ -306,11 +399,13 @@ const VideoSwiper = () => {
                   </Modal>
                 )}
               </Row>
+              
             </div>
           )}
         </SwiperSlide>
       ))}
     </Swiper>
+  
     </>
   );
 };
