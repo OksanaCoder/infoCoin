@@ -1,8 +1,4 @@
-import React, {
-  useState,
-  useRef,
- useEffect
-} from 'react';
+import React, { useState, useRef, useEffect } from "react";
 import {
   // Container,
   Row,
@@ -10,14 +6,14 @@ import {
   Modal,
   Button,
   Form,
-} from 'react-bootstrap';
-import '@styles/components/HomeContainer.css';
-import '@styles/components/VideoSwiper.css';
-import arrowRight from '@assets/icons/arrow-right.svg';
-import { ReactComponent as Share } from '@assets/icons/share.svg';
-import { ReactComponent as EyeOrange } from '@assets/icons/eye-orange.svg';
-import { ReactComponent as Eye } from '@assets/icons/eye.svg';
-import { ReactComponent as Like } from '@assets/icons/heart.svg';
+} from "react-bootstrap";
+import "@styles/components/HomeContainer.css";
+import "@styles/components/VideoSwiper.css";
+import arrowRight from "@assets/icons/arrow-right.svg";
+import { ReactComponent as Share } from "@assets/icons/share.svg";
+import { ReactComponent as EyeOrange } from "@assets/icons/eye-orange.svg";
+import { ReactComponent as Eye } from "@assets/icons/eye.svg";
+import { ReactComponent as Like } from "@assets/icons/heart.svg";
 // import video from '@assets/video/video.mp4';
 // import video2 from '@assets/video/video-2.mp4';
 // import speaker from '@assets/icons/audio.svg';
@@ -27,47 +23,44 @@ import {
   Radio,
   RadioGroup,
   FormControlLabel,
-} from '@material-ui/core';
-import { DefaultPlayer as Video } from 'react-html5video';
-import 'react-html5video/dist/styles.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
+} from "@material-ui/core";
+import { DefaultPlayer as Video } from "react-html5video";
+import "react-html5video/dist/styles.css";
+import { Swiper, SwiperSlide } from "swiper/react";
 // import ReactPlayer from 'react-player';
-import 'swiper/swiper-bundle.min.css';
-import 'swiper/swiper.min.css';
-import { stories } from './stories';
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+import { stories } from "./stories";
 // import Slider from 'react-slick';
 // import 'slick-carousel/slick/slick.css';
 // import Stories from 'react-insta-stories';
 // import VideoItem from '@components/VideoItem';
-import Geetest from 'react-geetest';
-import './gt.js'
+import Geetest from "react-geetest";
+import "./gt.js";
 // import Geetest from 'react-geetest';
 // import ReCAPTCHA from "react-google-recaptcha";
 
-import { Link } from 'react-router-dom';
-
-
-
+import { Link } from "react-router-dom";
 
 const VideoSwiper = ({ props }) => {
-
-  const onSuccess = isSuccess => console.log(isSuccess);
+  const onSuccess = (isSuccess) => console.log(isSuccess);
   // const onSuccess = isSuccess => console.log(isSuccess);
-  const [reportValue, setReportValue] = useState('complain');
-  const [complainValue, setComplainValue] = useState('reason1');
+  const [reportValue, setReportValue] = useState("complain");
+  const [complainValue, setComplainValue] = useState("reason1");
   const [showComplain, setShowComplain] = useState(false);
   const swiperRef = useRef();
+  const videoRef = useRef();
   const storiesData = stories;
 
   // console.log(story);
   // const videoTime = vidioRef.currentTime;
   // console.log(`current Time`, videoTime);
-  const handleChangeReport = event => {
-    console.log(event.target.value, 'report');
+  const handleChangeReport = (event) => {
+    console.log(event.target.value, "report");
     setReportValue(event.target.value);
   };
-  const handleChangeReason = event => {
-    console.log(event.target.value, 'report');
+  const handleChangeReason = (event) => {
+    console.log(event.target.value, "report");
     setComplainValue(event.target.value);
   };
   const handleSubmit = () => {
@@ -75,43 +68,43 @@ const VideoSwiper = ({ props }) => {
       //API call
       setShowComplain(null);
     } else if (showComplain === false) {
-      if (reportValue === 'complain') {
+      if (reportValue === "complain") {
         setShowComplain(true);
       } else {
         // API CALL
       }
     } else if (showComplain === null) {
       setShowComplain(false);
-      setReportValue('complain');
-      setComplainValue('reason1');
+      setReportValue("complain");
+      setComplainValue("reason1");
     }
   };
   const handleResetForm = () => {
     setModalShow(false);
     setShowComplain(false);
-    setReportValue('complain');
-    setComplainValue('reason1');
+    setReportValue("complain");
+    setComplainValue("reason1");
   };
 
   const [modalShow, setModalShow] = useState(false);
   const playerRef = useRef();
-  const [playing, setPlaying] = useState(true)
-  const [randomSecond, setRandomSecond] = useState(0)
-  const [captchaConfirmed, setCaptchaConfirmed] = useState(false)
+  // const [playing, setPlaying] = useState(true);
+  // const [randomSecond, setRandomSecond] = useState(0);
+  // const [captchaConfirmed, setCaptchaConfirmed] = useState(false);
 
-  useEffect(() => {
-    if (playing || captchaConfirmed) {
-      return
-    }
-    checkCaptcha()
-  }, [playing])
+  // useEffect(() => {
+  //   if (playing || captchaConfirmed) {
+  //     return;
+  //   }
+  //   // checkCaptcha()
+  // }, [playing]);
 
-  const checkCaptcha = () => {
-    if (window.confirm('Are you a human?')) {
-      setCaptchaConfirmed(true)
-      setPlaying(true)
-    }
-  }
+  // const checkCaptcha = () => {
+  //   if (window.confirm("Are you a human?")) {
+  //     setCaptchaConfirmed(true);
+  //     setPlaying(true);
+  //   }
+  // };
 
   // const [playing, setPlaying] = useState(false);
   // const videoRef = useRef(null);
@@ -154,14 +147,14 @@ const VideoSwiper = ({ props }) => {
         spaceBetween={50}
         loop={true}
         slidesPerView={1}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={swiper => (swiperRef.current = swiper)}
+        // onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         allowSlideNext={false}
         allowSlidePrev={false}
         // noSwiping={true}
       >
         {props === undefined &&
-          storiesData?.map(i => (
+          storiesData?.map((i) => (
             <SwiperSlide key={i.id}>
               {({ isActive }) => (
                 <div className="flex-column-align-stpauseart">
@@ -176,7 +169,7 @@ const VideoSwiper = ({ props }) => {
                       <div className="flex-row-center-align">
                         <Link
                           to={{
-                            pathname: `${'/profile'}/${i.author.id}`,
+                            pathname: `${"/profile"}/${i.author.id}`,
                             state: i?.author,
                           }}
                         >
@@ -190,15 +183,15 @@ const VideoSwiper = ({ props }) => {
                           <h2 className="title">
                             <Link
                               to={{
-                                pathname: `${'/profile'}/${i.author.id}`,
+                                pathname: `${"/profile"}/${i.author.id}`,
                                 state: i?.author,
                               }}
                             >
                               {i.author.name}
-                            </Link>{' '}
+                            </Link>{" "}
                           </h2>
                           <ul className="hashtag">
-                            {i.author.tags.map(tag => (
+                            {i.author.tags.map((tag) => (
                               <li key={tag} className="hashtag-item">
                                 {tag}
                               </li>
@@ -215,31 +208,28 @@ const VideoSwiper = ({ props }) => {
                   </Row>
                   {isActive ? (
                     <Video
+                      ref={videoRef}
                       playsInline
                       autoPlay={true}
                       muted={false}
                       loop={false}
-                      controls={['PlayPause', 'Volume']}
+                      controls={["PlayPause", "Volume"]}
                       // poster="https:eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
-                      onCanPlayThrough={() => {
-                        console.log('onCanPlayThrough');
+                      onDurationChange={(event) => {
+                        console.log(event.target.duration);
+                        // setRandomSecond(Math.floor(Math.random() * duration));
                       }}
-                      playing={playing}
-                      onDuration={(duration) => {
-                        setRandomSecond(Math.floor(Math.random() * duration))
-                      }}
-                      onPlay={() => setPlaying(true)}
-                      onProgress={async (data) => {
-                        if (captchaConfirmed || data.playedSeconds < randomSecond) {
-                          return
-                        }
-                        setPlaying(false)
-                      }}
+                      onPlay={() => {}}
                       onEnded={() => {
                         swiperRef.current.allowSlideNext = true;
                         swiperRef.current.slideNext();
                         swiperRef.current.allowSlideNext = false;
-                        console.log('ended, now auto slide right');
+                        setTimeout(() => {
+                          videoRef.current.videoEl.pause();
+                          if (window.confirm("Are you a human?")) {
+                            videoRef.current.videoEl.play();
+                          }
+                        }, 1000 * Math.floor(Math.random() * 3 + 1));
                       }}
                     >
                       <source
@@ -257,17 +247,15 @@ const VideoSwiper = ({ props }) => {
                       autoPlay={false}
                       muted={true}
                       loop={false}
-                      controls={['PlayPause', 'Volume']}
-                      playing={playing}
-                      onDuration={(duration) => {
-                        setRandomSecond(Math.floor(Math.random() * duration))
-                      }}
-                      onPlay={() => setPlaying(true)}
+                      controls={["PlayPause", "Volume"]}
                       onProgress={async (data) => {
-                        if (captchaConfirmed || data.playedSeconds < randomSecond) {
-                          return
-                        }
-                        setPlaying(false)
+                        // if (
+                        //   captchaConfirmed ||
+                        //   data.playedSeconds < randomSecond
+                        // ) {
+                        //   return;
+                        // }
+                        // setPlaying(false);
                       }}
                       // poster="https:eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
                     >
@@ -334,7 +322,7 @@ const VideoSwiper = ({ props }) => {
                                         control={<Radio />}
                                         label="Больше не показывать"
                                       />
-                                    </RadioGroup>{' '}
+                                    </RadioGroup>{" "}
                                   </>
                                 )}
                                 {showComplain === true && (
@@ -420,7 +408,7 @@ const VideoSwiper = ({ props }) => {
               <div className="flex-row-center-align">
                 <Link
                   to={{
-                    pathname: `${'/profile'}/${props.author.id}`,
+                    pathname: `${"/profile"}/${props.author.id}`,
                     state: props?.author,
                   }}
                 >
@@ -434,15 +422,15 @@ const VideoSwiper = ({ props }) => {
                   <h2 className="title">
                     <Link
                       to={{
-                        pathname: `${'/profile'}/${props.author.id}`,
+                        pathname: `${"/profile"}/${props.author.id}`,
                         state: props?.author,
                       }}
                     >
                       {props.author.name}
-                    </Link>{' '}
+                    </Link>{" "}
                   </h2>
                   <ul className="hashtag">
-                    {props.author.tags.map(tag => (
+                    {props.author.tags.map((tag) => (
                       <li key={tag} className="hashtag-item">
                         {tag}
                       </li>
@@ -457,7 +445,7 @@ const VideoSwiper = ({ props }) => {
               autoPlay={true}
               muted={false}
               loop={false}
-              controls={['PlayPause', 'Volume']}
+              controls={["PlayPause", "Volume"]}
             >
               <source
                 defer
