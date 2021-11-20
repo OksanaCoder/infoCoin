@@ -1,16 +1,51 @@
 @font-face {
-  font-family: "Segoe UI";
-  font-weight: 200;
-  src: local("Segoe UI"), url(@fonts/Segoe\ UI.ttf) format('opentype');
+    font-family: 'Segoe UI';
+    font-weight: 200;
+    src: local('Segoe UI'), url(@fonts/Segoe\ UI.ttf) format('opentype');
 }
 
 @font-face {
-  font-family: "Segoe UI";
-  font-weight: 600;
-  src: local("Segoe UI Bold"), url(@fonts/Segoe\ UI\ Bold.ttf) format('opentype');
+    font-family: 'Segoe UI';
+    font-weight: 600;
+    src: local('Segoe UI Bold'), url(@fonts/Segoe\ UI\ Bold.ttf) format('opentype');
 }
 
 
-  body {
-    font-family:'Segoe UI';
-  }
+/* MuseoSansCyrl-100 - cyrl */
+
+@font-face {
+    font-family: 'MuseoModerno';
+    font-style: normal;
+    font-weight: 100;
+    src: local(''), url('../src/fonts/MuseoSansCyrl-100.woff') format('woff'), /* Modern Browsers */
+    url('../src/fonts/MuseoSansCyrl-100.ttf') format('truetype');
+    /* Safari, Android, iOS */
+}
+
+
+/* MuseoSansCyrl-500 - cyrl */
+
+@font-face {
+    font-family: 'MuseoModerno';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''), url('../src/fonts/MuseoSansCyrl-500.woff') format('woff'), /* Modern Browsers */
+    url('../src/fonts/MuseoSansCyrl-500.ttf') format('truetype');
+    /* Safari, Android, iOS */
+}
+
+
+/* MuseoSansCyrl-700 - cyrl */
+
+@font-face {
+    font-family: 'MuseoModerno';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''), url('../src/fonts/MuseoSansCyrl-700.woff') format('woff'), /* Modern Browsers */
+    url('../src/fonts/MuseoSansCyrl-700.ttf') format('truetype');
+    /* Safari, Android, iOS */
+}
+
+body {
+    font-family: 'Segoe UI';
+}

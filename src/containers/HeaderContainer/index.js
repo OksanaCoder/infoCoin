@@ -1,22 +1,22 @@
-import React from "react";
-import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import logo from "@assets/icons/logo.svg";
-import compass from "@assets/icons/compass.svg";
-import dropdown from "@assets/icons/burger.svg";
-import user from "@assets/icons/user.svg";
-import history from "@assets/icons/history.svg";
-import category from "@assets/icons/buffer.svg";
-import play from "@assets/icons/play.svg";
-import add from "@assets/icons/group.svg";
-import wallet from "@assets/icons/wallet.svg";
-import coins from "@assets/icons/coins.svg";
-import settings from "@assets/icons/settings.svg";
-import web from "@assets/icons/web.svg";
-import headphones from "@assets/icons/headphones.svg";
-import info from "@assets/icons/info.svg";
-import doorOpen from "@assets/icons/door-open.svg";
-import "@styles/components/HeaderContainer.css";
+import React from 'react';
+import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '@assets/icons/logo.svg';
+import { ReactComponent as Compass } from '@assets/icons/compass.svg';
+import { ReactComponent as DropdownIcon } from '@assets/icons/burger.svg';
+import { ReactComponent as User } from '@assets/icons/user.svg';
+import { ReactComponent as History } from '@assets/icons/history.svg';
+import { ReactComponent as Category } from '@assets/icons/buffer.svg';
+import { ReactComponent as Play } from '@assets/icons/play.svg';
+import { ReactComponent as Add } from '@assets/icons/group.svg';
+import { ReactComponent as Wallet } from '@assets/icons/wallet.svg';
+import { ReactComponent as Coins } from '@assets/icons/coins.svg';
+import { ReactComponent as Settings } from '@assets/icons/settings.svg';
+import { ReactComponent as Web } from '@assets/icons/web.svg';
+import { ReactComponent as Headphones } from '@assets/icons/headphones.svg';
+import { ReactComponent as Info } from '@assets/icons/info.svg';
+import { ReactComponent as DoorOpen } from '@assets/icons/door-open.svg';
+import '@styles/components/HeaderContainer.css';
 
 const HeaderContainer = () => {
   return (
@@ -26,40 +26,43 @@ const HeaderContainer = () => {
           <Link to="/" className="text-decoration-none d-flex">
             <Navbar.Brand to="/">
               <h1 className="logo">
-                <img src={logo} alt="logo" className="me-2" />
+                <Logo className="me-2" />
                 INFOCOIN
               </h1>
             </Navbar.Brand>
           </Link>
           <Nav className="ml-auto flex-row-center-align">
             <Nav.Link>
-              <img src={compass} className="icon-small" alt="" />
+              <Compass className="icon-small" />
             </Nav.Link>
             <Nav.Link className="me-2 ms-4">
               <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  <img src={dropdown} className="icon-small" alt="" />
+                  <DropdownIcon className="icon-small" />
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
                   <Link to="/history" className="text-decoration-none">
                     <Dropdown.Item href="#/action-1">
-                      <img src={history} className="me-3" alt="" />
+                      <History className="me-3" />
                       История
                     </Dropdown.Item>
                   </Link>
-                  <Link to="/categories" className="text-decoration-none d-flex">
+                  <Link
+                    to="/categories"
+                    className="text-decoration-none d-flex"
+                  >
                     <Dropdown.Item href="#/action-2">
-                      <img src={category} className="me-3" alt="" />
+                      <Category className="me-3" />
                       Категория
                     </Dropdown.Item>
                   </Link>
                   <Dropdown.Item href="#/action-3">
-                    <img src={play} className="me-3" alt="" />
+                    <Play className="me-3" />
                     Общий Плейлист
                   </Dropdown.Item>
                   <Dropdown.Item href="#/action-3">
-                    <img src={add} className="me-3" alt="" />
+                    <Add className="me-3" />
                     Мой Плейлист
                   </Dropdown.Item>
                 </Dropdown.Menu>
@@ -83,38 +86,55 @@ const HeaderContainer = () => {
                       U
                     </div>
                     <span>@User122434</span>
-                    <p className="m-0">
-                      Баланс IC <img src={coins} alt="" />
+                    <p className="m-0 version">
+                      Баланс IC{' '}
+                      <span>
+                        12.3 <Coins />
+                      </span>
                     </p>
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
-                    <img src={wallet} className="me-3" alt="" />
-                    Кошелек
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    <img src={user} className="me-3" alt="" />
-                    Аккаунт
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    <img src={settings} className="me-3" alt="" />
-                    Настройки
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    <img src={web} className="me-3" alt="" />
-                    Кеш и данные
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    <img src={headphones} className="me-3" alt="" />
-                    Поддержка
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    <img src={info} className="me-3" alt="" />
-                    Информация
-                  </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
-                    <img src={doorOpen} className="me-3" alt="" />
-                    Выход
-                  </Dropdown.Item>
+                  <Link to="/wallet" className="text-decoration-none d-flex">
+                    <Dropdown.Item href="#/action-2">
+                      <Wallet className="me-3" />
+                      Кошелек
+                    </Dropdown.Item>
+                  </Link>
+                  <Link to="/account" className="text-decoration-none">
+                    <Dropdown.Item href="#/action-3">
+                      <User className="me-3" />
+                      Аккаунт
+                    </Dropdown.Item>
+                  </Link>
+                  <Link to="/settings" className="text-decoration-none">
+                    <Dropdown.Item href="#/action-3">
+                      <Settings className="me-3" />
+                      Настройки
+                    </Dropdown.Item>
+                  </Link>
+                  <Link to="/cache-and-data" className="text-decoration-none">
+                    <Dropdown.Item href="#/action-3">
+                      <Web className="me-3" />
+                      Кеш и данные
+                    </Dropdown.Item>
+                  </Link>
+                  <Link to="/support" className="text-decoration-none">
+                    <Dropdown.Item href="#/action-3">
+                      <Headphones className="me-3" />
+                      Поддержка
+                    </Dropdown.Item>
+                  </Link>
+                  <Link to="/info" className="text-decoration-none">
+                    <Dropdown.Item href="#/action-3">
+                      <Info className="me-3" />
+                      Информация
+                    </Dropdown.Item>
+                  </Link>
+                  <Link to="/exit" className="text-decoration-none">
+                    <Dropdown.Item href="#/action-3">
+                      <DoorOpen className="me-3" />
+                      Выход
+                    </Dropdown.Item>
+                  </Link>
                 </Dropdown.Menu>
               </Dropdown>
             </Nav.Link>

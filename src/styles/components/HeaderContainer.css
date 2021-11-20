@@ -1,5 +1,4 @@
-@import "@styles/base.css";
-
+@import '@styles/base.css';
 .navbarGrey {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #fff;
@@ -8,9 +7,17 @@
     position: fixed !important;
     width: 100%;
 }
+
 .logo {
     font-weight: 600;
+    display: flex;
+    align-items: center;
 }
+
+.version>span {
+    font-size: 0.8em;
+}
+
 .circle-user {
     border-radius: 50%;
     background-color: var(--primary-color);

@@ -13,3 +13,25 @@
     object-fit: cover;
     margin-right: 15px;
 }
+
+/* new */
+.videoWrapper {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    display: flex;
+}
+.video {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+.video__player {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    scroll-snap-align: start;
+}
+.video > div:nth-child(1) > div:nth-child(1) {
+    display: none !important;
+  }

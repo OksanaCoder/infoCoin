@@ -1,0 +1,19 @@
+.borderBlack {
+    background: none !important;
+    border-radius: 50px !important;
+    border: 2px solid #000 !important;
+}
+
+.btn-arrow {
+    border-radius: 50px !important;
+    padding: 8px 30px !important;
+    position: absolute !important;
+    right: 0 !important;
+    border: none !important;
+    background: #000 !important;
+}
+@media screen and (max-width: 600px) {
+    .m-mob {
+        margin-top: 20px;
+    }
+}

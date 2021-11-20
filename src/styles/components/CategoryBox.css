@@ -1,12 +1,100 @@
 .category-box {
-    padding: 40px 20px;
-    border-radius: 20px;
-    background: #fff;
-    /* display: flex;
+    height: 170px;
+    border-radius: 35px;
+    background-color: #ffffff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
-    align-items: center; */
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    border: 1px solid transparent;
 }
-.category-box h6 {
-    margin: 0;
+
+.category-box:active,
+.category-box:focus,
+.category-box:hover {
+    -webkit-transition: 223ms;
+    -o-transition: 223ms;
+    transition: 223ms;
+    border: 1px solid #707070;
+    cursor: pointer;
+}
+
+.category-box-image-wrap {
+    position: relative;
+}
+
+.category-box-image {
+    height: 170px;
+    border-radius: 35px;
+    background-color: #fa00a780;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.category-box-image:active,
+.category-box-image:focus,
+.category-box-image:hover {
+    -webkit-transition: 223ms;
+    -o-transition: 223ms;
+    transition: 223ms;
+    border: 1px solid #fa00a7;
+    cursor: pointer;
+}
+
+.category-box-cover {
+    position: absolute;
+}
+
+.category-box-image-wrap>img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    border-radius: 35px;
+}
+
+.category-name {
+    margin: 0 auto;
     text-align: center;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px;
+    color: #fa00a7;
+    white-space: pre-line;
+}
+
+.category-name-onImage {
+    margin: 0 auto;
+    text-align: center;
+    font-family: Helvetica;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 48px;
+    color: #ffffff;
+    white-space: pre-line;
+}
+
+@media (min-width: 768px) and (max-width: 1399px) {
+    .category-name,
+    .category-name-onImage {
+        font-size: 28px;
+    }
 }
