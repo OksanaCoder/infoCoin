@@ -157,7 +157,7 @@ const VideoSwiper = ({ props }) => {
           storiesData?.map((i) => (
             <SwiperSlide key={i.id}>
               {({ isActive }) => (
-                <div className="flex-column-align-stpauseart">
+                <div className="flex-column-align mob-padding">
                   <Row>
                     <Col
                       lg={6}
@@ -233,7 +233,7 @@ const VideoSwiper = ({ props }) => {
                           // }
                           if (captchaConfirm) {
                             videoRef.current.videoEl.play();
-                          }
+                          } 
                         }, 1000 * Math.floor(Math.random() * 3 + 1));
                       }}
                     >
