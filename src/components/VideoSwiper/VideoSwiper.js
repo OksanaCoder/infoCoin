@@ -14,10 +14,6 @@ import { ReactComponent as Share } from "@assets/icons/share.svg";
 import { ReactComponent as EyeOrange } from "@assets/icons/eye-orange.svg";
 import { ReactComponent as Eye } from "@assets/icons/eye.svg";
 import { ReactComponent as Like } from "@assets/icons/heart.svg";
-// import video from '@assets/video/video.mp4';
-// import video2 from '@assets/video/video-2.mp4';
-// import speaker from '@assets/icons/audio.svg';
-// import playBtn from '@assets/icons/play-icon.png';
 import {
   FormControl,
   Radio,
@@ -27,14 +23,9 @@ import {
 import { DefaultPlayer as Video } from "react-html5video";
 import "react-html5video/dist/styles.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import ReactPlayer from 'react-player';
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import { stories } from "./stories";
-// import Slider from 'react-slick';
-// import 'slick-carousel/slick/slick.css';
-// import Stories from 'react-insta-stories';
-// import VideoItem from '@components/VideoItem';
 import Geetest from "react-geetest";
 import "./gt.js";
 // import Geetest from 'react-geetest';
@@ -44,7 +35,6 @@ import { Link } from "react-router-dom";
 
 const VideoSwiper = ({ props }) => {
   const onSuccess = (isSuccess) => console.log(isSuccess);
-  // const onSuccess = isSuccess => console.log(isSuccess);
   const [reportValue, setReportValue] = useState("complain");
   const [complainValue, setComplainValue] = useState("reason1");
   const [showComplain, setShowComplain] = useState(false);
@@ -87,6 +77,16 @@ const VideoSwiper = ({ props }) => {
   };
 
   const [modalShow, setModalShow] = useState(false);
+  const [modalCaptcha, setModalCaptcha] = useState(false);
+  const [captchaConfirm, setCaptchaConfirm] = useState(false);
+  const handleCloseModal = () => {
+    setModalCaptcha(false)
+  }
+  const handleConfirm = () => {
+    setCaptchaConfirm(true);
+    setModalCaptcha(false)
+    setModalShow(false)
+  }
   const playerRef = useRef();
   // const [playing, setPlaying] = useState(true);
   // const [randomSecond, setRandomSecond] = useState(0);
@@ -208,6 +208,7 @@ const VideoSwiper = ({ props }) => {
                   </Row>
                   {isActive ? (
                     <Video
+                      // style={{marginLeft: "-3px"}}
                       ref={videoRef}
                       playsInline
                       autoPlay={true}
@@ -226,7 +227,11 @@ const VideoSwiper = ({ props }) => {
                         swiperRef.current.allowSlideNext = false;
                         setTimeout(() => {
                           videoRef.current.videoEl.pause();
-                          if (window.confirm("Are you a human?")) {
+                          setModalCaptcha(true);
+                          // if (window.confirm("Are you a human?")) {
+                          //   videoRef.current.videoEl.play();
+                          // }
+                          if (captchaConfirm) {
                             videoRef.current.videoEl.play();
                           }
                         }, 1000 * Math.floor(Math.random() * 3 + 1));
@@ -238,7 +243,20 @@ const VideoSwiper = ({ props }) => {
                         type="video/MP4"
                         className="video"
                       />
-
+                    <Modal show={modalCaptcha} onHide={handleCloseModal}>
+                            <Modal.Header closeButton>
+                              <Modal.Title>Confirm you are a human</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>Captcha</Modal.Body>
+                            <Modal.Footer>
+                              <Button variant="secondary" onClick={handleCloseModal}>
+                                Close
+                              </Button>
+                              <Button variant="primary" onClick={handleConfirm}>
+                                Confirm
+                              </Button>
+                            </Modal.Footer>
+                          </Modal>
                       {/* <track label="English" kind="subtitles" srcLang="en" src="http:source.vtt" default /> */}
                     </Video>
                   ) : (
