@@ -1,43 +1,53 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from 'react';
 import {
-  // Container,
   Row,
   Col,
   Modal,
   Button,
-  Form,
-} from "react-bootstrap";
-import "@styles/components/HomeContainer.css";
-import "@styles/components/VideoSwiper.css";
-import arrowRight from "@assets/icons/arrow-right.svg";
-import { ReactComponent as Share } from "@assets/icons/share.svg";
-import { ReactComponent as EyeOrange } from "@assets/icons/eye-orange.svg";
-import { ReactComponent as Eye } from "@assets/icons/eye.svg";
-import { ReactComponent as Like } from "@assets/icons/heart.svg";
-import {
-  FormControl,
-  Radio,
-  RadioGroup,
-  FormControlLabel,
-} from "@material-ui/core";
-import { DefaultPlayer as Video } from "react-html5video";
-import "react-html5video/dist/styles.css";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";
-import "swiper/swiper.min.css";
-import { stories } from "./stories";
-import Geetest from "react-geetest";
-import "./gt.js";
+  //  Form
+} from 'react-bootstrap';
+import '@styles/components/HomeContainer.css';
+import '@styles/components/VideoSwiper.css';
+import arrowRight from '@assets/icons/arrow-right.svg';
+import { ReactComponent as Share } from '@assets/icons/share.svg';
+import { ReactComponent as Eye } from '@assets/icons/eye.svg';
+import { ReactComponent as Like } from '@assets/icons/heart.svg';
+// import {
+//   FormControl,
+//   Radio,
+//   RadioGroup,
+//   FormControlLabel,
+// } from '@material-ui/core';
+import { DefaultPlayer as Video } from 'react-html5video';
+import 'react-html5video/dist/styles.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.min.css';
+import 'swiper/swiper.min.css';
+import { stories } from './stories';
+import './gt.js';
 // import Geetest from 'react-geetest';
 // import ReCAPTCHA from "react-google-recaptcha";
+import { Link } from 'react-router-dom';
+import LinkBrowsingHistoryItem from '@components/History/LinkBrowsingHistoryItem';
+import UnacceptableСontentModal from './UnacceptableСontentModal';
 
-import { Link } from "react-router-dom";
+import ReCAPTCHA from "react-google-recaptcha";
+
+
 
 const VideoSwiper = ({ props }) => {
-  const onSuccess = (isSuccess) => console.log(isSuccess);
-  const [reportValue, setReportValue] = useState("complain");
-  const [complainValue, setComplainValue] = useState("reason1");
-  const [showComplain, setShowComplain] = useState(false);
+
+  const recaptchaRef = React.createRef();
+
+  const handleCaptcha = () => {
+    setCaptchaConfirm(true);
+    setModalCaptcha(false);
+  }
+  // const onSuccess = isSuccess => console.log(isSuccess);
+  // const [reportValue, setReportValue] = useState('complain');
+  // const [complainValue, setComplainValue] = useState('reason1');
+  // const [showComplain, setShowComplain] = useState(false);
+
   const swiperRef = useRef();
   const videoRef = useRef();
   const storiesData = stories;
@@ -45,49 +55,30 @@ const VideoSwiper = ({ props }) => {
   // console.log(story);
   // const videoTime = vidioRef.currentTime;
   // console.log(`current Time`, videoTime);
-  const handleChangeReport = (event) => {
-    console.log(event.target.value, "report");
-    setReportValue(event.target.value);
-  };
-  const handleChangeReason = (event) => {
-    console.log(event.target.value, "report");
-    setComplainValue(event.target.value);
-  };
-  const handleSubmit = () => {
-    if (showComplain === true) {
-      //API call
-      setShowComplain(null);
-    } else if (showComplain === false) {
-      if (reportValue === "complain") {
-        setShowComplain(true);
-      } else {
-        // API CALL
-      }
-    } else if (showComplain === null) {
-      setShowComplain(false);
-      setReportValue("complain");
-      setComplainValue("reason1");
-    }
-  };
-  const handleResetForm = () => {
-    setModalShow(false);
-    setShowComplain(false);
-    setReportValue("complain");
-    setComplainValue("reason1");
-  };
 
+  // if modalShow === true, then stop plaing video
   const [modalShow, setModalShow] = useState(false);
   const [modalCaptcha, setModalCaptcha] = useState(false);
   const [captchaConfirm, setCaptchaConfirm] = useState(false);
+  const [targetVideo, setTargetVideo] = useState('');
   const handleCloseModal = () => {
-    setModalCaptcha(false)
-  }
+    setModalCaptcha(false);
+  };
   const handleConfirm = () => {
     setCaptchaConfirm(true);
-    setModalCaptcha(false)
-    setModalShow(false)
-  }
-  const playerRef = useRef();
+    setModalCaptcha(false);
+  };
+
+  const handlerToggleModal = evt => {
+    evt.preventDefault();
+
+    if (evt.target.id === evt.currentTarget.id) {
+      setTargetVideo(evt?.target?.id);
+      setModalShow(!modalShow);
+    }
+  };
+
+  // const playerRef = useRef();
   // const [playing, setPlaying] = useState(true);
   // const [randomSecond, setRandomSecond] = useState(0);
   // const [captchaConfirmed, setCaptchaConfirmed] = useState(false);
@@ -135,26 +126,19 @@ const VideoSwiper = ({ props }) => {
     onChange={onChange}
   
   /> */}
-      {/* <form onSubmit={() => { recaptchaRef.current.execute(); }}> */}
-      {/* <ReCAPTCHA
-      ref={recaptchaRef}
-      // size="invisible"
-      sitekey="6LckU0MdAAAAADWY8V4yEJlDd-ibaCxEw9g7LbtI"
-      onChange={onChange}
-    /> */}
-      {/* </form> */}
+      
       <Swiper
         spaceBetween={50}
         loop={true}
         slidesPerView={1}
         // onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSwiper={swiper => (swiperRef.current = swiper)}
         allowSlideNext={false}
         allowSlidePrev={false}
         // noSwiping={true}
       >
         {props === undefined &&
-          storiesData?.map((i) => (
+          storiesData?.map(i => (
             <SwiperSlide key={i.id}>
               {({ isActive }) => (
                 <div className="flex-column-align mob-padding">
@@ -169,7 +153,7 @@ const VideoSwiper = ({ props }) => {
                       <div className="flex-row-center-align">
                         <Link
                           to={{
-                            pathname: `${"/profile"}/${i.author.id}`,
+                            pathname: `${'/profile'}/${i.author.id}`,
                             state: i?.author,
                           }}
                         >
@@ -183,15 +167,15 @@ const VideoSwiper = ({ props }) => {
                           <h2 className="title">
                             <Link
                               to={{
-                                pathname: `${"/profile"}/${i.author.id}`,
+                                pathname: `${'/profile'}/${i.author.id}`,
                                 state: i?.author,
                               }}
                             >
                               {i.author.name}
-                            </Link>{" "}
+                            </Link>{' '}
                           </h2>
                           <ul className="hashtag">
-                            {i.author.tags.map((tag) => (
+                            {i.author.tags.map(tag => (
                               <li key={tag} className="hashtag-item">
                                 {tag}
                               </li>
@@ -214,9 +198,9 @@ const VideoSwiper = ({ props }) => {
                       autoPlay={true}
                       muted={false}
                       loop={false}
-                      controls={["PlayPause", "Volume"]}
+                      controls={['PlayPause', 'Volume']}
                       // poster="https:eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
-                      onDurationChange={(event) => {
+                      onDurationChange={event => {
                         console.log(event.target.duration);
                         // setRandomSecond(Math.floor(Math.random() * duration));
                       }}
@@ -233,7 +217,7 @@ const VideoSwiper = ({ props }) => {
                           // }
                           if (captchaConfirm) {
                             videoRef.current.videoEl.play();
-                          } 
+                          }
                         }, 1000 * Math.floor(Math.random() * 3 + 1));
                       }}
                     >
@@ -243,20 +227,33 @@ const VideoSwiper = ({ props }) => {
                         type="video/MP4"
                         className="video"
                       />
-                    <Modal show={modalCaptcha} onHide={handleCloseModal}>
-                            <Modal.Header closeButton>
-                              <Modal.Title>Confirm you are a human</Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body>Captcha</Modal.Body>
-                            <Modal.Footer>
-                              <Button variant="secondary" onClick={handleCloseModal}>
-                                Close
-                              </Button>
-                              <Button variant="primary" onClick={handleConfirm}>
-                                Confirm
-                              </Button>
-                            </Modal.Footer>
-                          </Modal>
+                      <Modal show={modalCaptcha} onHide={handleCloseModal}>
+                        <Modal.Header closeButton>
+                        
+                        </Modal.Header>
+                        <Modal.Body>
+
+                      <form onSubmit={() => { recaptchaRef.current.execute(); }}> 
+                       <ReCAPTCHA
+                        ref={recaptchaRef}
+                        // size="invisible"
+                        sitekey="6LckU0MdAAAAADWY8V4yEJlDd-ibaCxEw9g7LbtI"
+                        onChange={handleCaptcha}
+                      /> 
+                      </form> 
+                        </Modal.Body>
+                        {/* <Modal.Footer>
+                          <Button
+                            variant="secondary"
+                            onClick={handleCloseModal}
+                          >
+                            Close
+                          </Button>
+                          <Button variant="primary" onClick={handleConfirm}>
+                            Confirm
+                          </Button>
+                        </Modal.Footer> */}
+                      </Modal>
                       {/* <track label="English" kind="subtitles" srcLang="en" src="http:source.vtt" default /> */}
                     </Video>
                   ) : (
@@ -265,8 +262,8 @@ const VideoSwiper = ({ props }) => {
                       autoPlay={false}
                       muted={true}
                       loop={false}
-                      controls={["PlayPause", "Volume"]}
-                      onProgress={async (data) => {
+                      controls={['PlayPause', 'Volume']}
+                      onProgress={async data => {
                         // if (
                         //   captchaConfirmed ||
                         //   data.playedSeconds < randomSecond
@@ -275,15 +272,8 @@ const VideoSwiper = ({ props }) => {
                         // }
                         // setPlaying(false);
                       }}
-                      // poster="https:eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
-                    >
-                      {/* <source src={i.url} type="video/MP4" className="video" /> */}
-
-                      {/* <track label="English" kind="subtitles" srcLang="en" src="http:source.vtt" default /> */}
-                    </Video>
+                    ></Video>
                   )}
-
-                  {/* <ReactPlayer playing url="http://localhost:3001/video.mp4" /> */}
 
                   <Row className="flex-row-center-align mt-2">
                     <Col lg={6} md={6} sm={6} xs={6}>
@@ -293,188 +283,30 @@ const VideoSwiper = ({ props }) => {
                       <Share className="icon-small icon-hover" />
                       <Eye
                         className="icon-small icon-hover ms-4"
-                        onClick={() => setModalShow(true)}
+                        id={i.id}
+                        // prop={}
+                        onClick={handlerToggleModal}
                       />
+
                       <Like className="icon-small icon-hover ms-4" />
                     </Col>
-                    {modalShow && (
-                      <Modal
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                        size="lg"
-                        aria-labelledby="contained-modal-title-vcenter"
-                        backdropClassName="modal-window-backdrop"
-                        centered
-                      >
-                        <Modal.Header closeButton></Modal.Header>
-                        <Modal.Body>
-                          <div className="text-center">
-                            <EyeOrange />
-                            {(showComplain === true ||
-                              showComplain === false) && (
-                              <h6 className="my-2">Неприемлимый контент</h6>
-                            )}
-                            {showComplain === null && (
-                              <h6 className="my-2">Спасибо !</h6>
-                            )}
-                          </div>
-                          <Form className="text-left my-4">
-                            <div className="mb-3 text-left">
-                              <FormControl component="fieldset">
-                                {showComplain === false && (
-                                  <>
-                                    <RadioGroup
-                                      aria-label="report"
-                                      defaultValue="Пожаловаться"
-                                      name="radio-buttons-group"
-                                      value={complainValue}
-                                      onChange={handleChangeReason}
-                                    >
-                                      <FormControlLabel
-                                        value="complain"
-                                        control={<Radio />}
-                                        label="Пожаловаться"
-                                      />
-                                      <FormControlLabel
-                                        value="showOff"
-                                        control={<Radio />}
-                                        label="Больше не показывать"
-                                      />
-                                    </RadioGroup>{" "}
-                                  </>
-                                )}
-                                {showComplain === true && (
-                                  <RadioGroup
-                                    aria-label="reasonComplain"
-                                    defaultValue="Причина"
-                                    name="radio-buttons-group"
-                                    value={reportValue}
-                                    onChange={handleChangeReport}
-                                  >
-                                    <FormControlLabel
-                                      value="reason1"
-                                      control={<Radio />}
-                                      label="Причина"
-                                    />
-                                    <FormControlLabel
-                                      value="reason2"
-                                      control={<Radio />}
-                                      label="Причина"
-                                    />
-                                    <FormControlLabel
-                                      value="reason3"
-                                      control={<Radio />}
-                                      label="Причина"
-                                    />
-                                    <FormControlLabel
-                                      value="reason4"
-                                      control={<Radio />}
-                                      label="Причина"
-                                    />
-                                  </RadioGroup>
-                                )}
-                                {showComplain === null && (
-                                  <h6>
-                                    Вы помогаете нам сделать Infocoin лучше
-                                  </h6>
-                                )}
-                              </FormControl>
-                            </div>
-                          </Form>
-                        </Modal.Body>
-                        <Modal.Footer className="flex-row-center-align">
-                          {showComplain === null ? (
-                            <Button
-                              onClick={handleResetForm}
-                              className="btn-simple text-black"
-                            >
-                              Вернуться на главную
-                            </Button>
-                          ) : (
-                            <>
-                              <Button
-                                onClick={() => setModalShow(false)}
-                                className="btn-simple text-black"
-                              >
-                                Отменить
-                              </Button>
-                              <Button
-                                className="btn-simple text-black"
-                                onClick={handleSubmit}
-                              >
-                                Продолжить
-                              </Button>
-                            </>
-                          )}
-                        </Modal.Footer>
-                      </Modal>
-                    )}
                   </Row>
                 </div>
               )}
             </SwiperSlide>
           ))}
+
         {props !== undefined && (
-          <div className="history-wrapper">
-            <Col
-              lg={6}
-              md={6}
-              sm={12}
-              xs={12}
-              className="flex-row-center-align info"
-            >
-              <div className="flex-row-center-align">
-                <Link
-                  to={{
-                    pathname: `${"/profile"}/${props.author.id}`,
-                    state: props?.author,
-                  }}
-                >
-                  <img
-                    src={props.author.avatar}
-                    alt="profile avatar"
-                    className="profile-icon"
-                  />
-                </Link>
-                <div className="text-left">
-                  <h2 className="title">
-                    <Link
-                      to={{
-                        pathname: `${"/profile"}/${props.author.id}`,
-                        state: props?.author,
-                      }}
-                    >
-                      {props.author.name}
-                    </Link>{" "}
-                  </h2>
-                  <ul className="hashtag">
-                    {props.author.tags.map((tag) => (
-                      <li key={tag} className="hashtag-item">
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              <img className="icon-small ms-2:" src={arrowRight} alt="" />
-            </Col>
-            <Video
-              playsInline
-              autoPlay={true}
-              muted={false}
-              loop={false}
-              controls={["PlayPause", "Volume"]}
-            >
-              <source
-                defer
-                src={props.url}
-                type="video/MP4"
-                className="video"
-              />
-            </Video>
-          </div>
+          <LinkBrowsingHistoryItem props={props} arrowRight={arrowRight} />
         )}
       </Swiper>
+      {modalShow && (
+        <UnacceptableСontentModal
+          handlerToggleModal={handlerToggleModal}
+          key={targetVideo}
+          videoId={targetVideo}
+        />
+      )}
     </>
   );
 };

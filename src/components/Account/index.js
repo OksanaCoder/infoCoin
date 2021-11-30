@@ -1,16 +1,15 @@
-import React from "react";
-import { Container, Tab, Row, Nav, Col } from "react-bootstrap";
-import userImg from "@assets/icons/user.svg";
-import Preferences from "@components/Preferences";
-import UserProfile from "@components/UserProfile";
-import Security from '@components/Security'
-import NonContent from "@components/NonContent"
-
+import React from 'react';
+import { Container, Tab, Row, Nav, Col } from 'react-bootstrap';
+import userImg from '@assets/icons/user.svg';
+import Preferences from '@components/Preferences';
+import UserProfile from '@components/UserProfile';
+import { Security } from '@components/Security';
+import NonContent from '@components/NonContent';
 
 const Account = () => {
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper page">
         <Container className="my-3 d-flex">
           <img className="me-3" src={userImg} alt="" />
           <h4>Аккаунт</h4>

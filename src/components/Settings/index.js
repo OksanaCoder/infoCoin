@@ -10,7 +10,7 @@ import Schema from '@components/Schema';
 const Settings = () => {
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper page">
         <Container className="my-3 d-flex">
           <img className="me-3" src={settings} alt="" />
           <h4>Настройки</h4>

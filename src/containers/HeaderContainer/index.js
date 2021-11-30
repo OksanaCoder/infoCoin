@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '@assets/icons/logo.svg';
 import { ReactComponent as Compass } from '@assets/icons/compass.svg';
-import { ReactComponent as DropdownIcon } from '@assets/icons/burger.svg';
 import { ReactComponent as User } from '@assets/icons/user.svg';
 import { ReactComponent as History } from '@assets/icons/history.svg';
 import { ReactComponent as Category } from '@assets/icons/buffer.svg';
@@ -17,11 +16,17 @@ import { ReactComponent as Headphones } from '@assets/icons/headphones.svg';
 import { ReactComponent as Info } from '@assets/icons/info.svg';
 import { ReactComponent as DoorOpen } from '@assets/icons/door-open.svg';
 import '@styles/components/HeaderContainer.css';
+import { Burger } from '@components/Burger';
 
 const HeaderContainer = () => {
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const handleToggleMenu = evt => {
+    evt.preventDefault();
+    evt.target && setIsOpenMenu(!isOpenMenu);
+  };
   return (
     <>
-      <Navbar className="navbarGrey">
+      <Navbar className="navbarGrey page">
         <Container>
           <Link to="/" className="text-decoration-none d-flex">
             <Navbar.Brand to="/">
@@ -32,18 +37,26 @@ const HeaderContainer = () => {
             </Navbar.Brand>
           </Link>
           <Nav className="ml-auto flex-row-center-align">
-            <Nav.Link>
+            <Nav.Link as="div">
               <Compass className="icon-small" />
             </Nav.Link>
-            <Nav.Link className="me-2 ms-4">
-              <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                  <DropdownIcon className="icon-small" />
+            <Nav.Link as="div" className="me-2 ms-4">
+              <Dropdown onToggle={show => setIsOpenMenu(show)}>
+                <Dropdown.Toggle
+                  as="div"
+                  split="false"
+                  variant="success"
+                  id="dropdown-basic"
+                >
+                  <Burger
+                    isOpenMenu={isOpenMenu}
+                    handleToggleMenu={handleToggleMenu}
+                  />
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
+                <Dropdown.Menu className="burger-dropdown-menu">
                   <Link to="/history" className="text-decoration-none">
-                    <Dropdown.Item href="#/action-1">
+                    <Dropdown.Item as="p">
                       <History className="me-3" />
                       История
                     </Dropdown.Item>
@@ -52,23 +65,23 @@ const HeaderContainer = () => {
                     to="/categories"
                     className="text-decoration-none d-flex"
                   >
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item as="p">
                       <Category className="me-3" />
                       Категория
                     </Dropdown.Item>
                   </Link>
-                  <Dropdown.Item href="#/action-3">
+                  <Dropdown.Item as="p">
                     <Play className="me-3" />
                     Общий Плейлист
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">
+                  <Dropdown.Item as="p">
                     <Add className="me-3" />
                     Мой Плейлист
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link as="div">
               <Dropdown>
                 <Dropdown.Toggle
                   variant="success"
@@ -80,7 +93,7 @@ const HeaderContainer = () => {
                   </div>
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
+                <Dropdown.Menu className="user-dropdown-menu">
                   <Dropdown.Item href="#/action-1">
                     <div className="icon-small circle-user" alt="">
                       U
@@ -94,43 +107,43 @@ const HeaderContainer = () => {
                     </p>
                   </Dropdown.Item>
                   <Link to="/wallet" className="text-decoration-none d-flex">
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item as="p">
                       <Wallet className="me-3" />
                       Кошелек
                     </Dropdown.Item>
                   </Link>
                   <Link to="/account" className="text-decoration-none">
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item as="p">
                       <User className="me-3" />
                       Аккаунт
                     </Dropdown.Item>
                   </Link>
                   <Link to="/settings" className="text-decoration-none">
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item as="p">
                       <Settings className="me-3" />
                       Настройки
                     </Dropdown.Item>
                   </Link>
                   <Link to="/cache-and-data" className="text-decoration-none">
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item as="p">
                       <Web className="me-3" />
                       Кеш и данные
                     </Dropdown.Item>
                   </Link>
                   <Link to="/support" className="text-decoration-none">
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item as="p">
                       <Headphones className="me-3" />
                       Поддержка
                     </Dropdown.Item>
                   </Link>
                   <Link to="/info" className="text-decoration-none">
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item as="p">
                       <Info className="me-3" />
                       Информация
                     </Dropdown.Item>
                   </Link>
                   <Link to="/exit" className="text-decoration-none">
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item as="p">
                       <DoorOpen className="me-3" />
                       Выход
                     </Dropdown.Item>

@@ -11,7 +11,7 @@ const AuthorProfile = () => {
   const { avatar, cover, name, description } = state;
 
   return (
-    <div className="author">
+    <div className="author page">
       <img className="author-cover" src={cover} alt="profile cover" />
 
       <Container>

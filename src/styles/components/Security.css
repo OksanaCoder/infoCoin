@@ -2,6 +2,7 @@
     background: none !important;
     border-radius: 50px !important;
     border: 2px solid #000 !important;
+    box-shadow: none !important;
 }
 
 .btn-arrow {
@@ -12,8 +13,56 @@
     border: none !important;
     background: #000 !important;
 }
+
 @media screen and (max-width: 600px) {
     .m-mob {
         margin-top: 20px;
     }
+}
+
+.devices-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.devices-list {}
+
+.devices-list-header {}
+
+.devices-list-container {
+    height: 100%;
+    width: 100%;
+    max-height: 100px;
+    max-width: 260px;
+    transition: 1223ms;
+}
+
+.devices-list-container-open {
+    height: 100%;
+    width: 100%;
+    max-width: 260px;
+    max-height: 200px;
+    transition: 1223ms;
+}
+
+.devices-list-scroll {
+    padding: 0 20px 0 0;
+}
+
+.devices-list-item {}
+
+.devices-arrow {
+    cursor: pointer;
+    transition: 223ms;
+}
+
+.devices-arrow-rotate {
+    transform: rotate(180deg);
+    cursor: pointer;
+    transition: 223ms;
+}
+
+.description {
+    margin: 0 0 8px 0 !important;
 }

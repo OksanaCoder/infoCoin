@@ -108,7 +108,7 @@ const Wallet = () => {
   };
   return (
     <>
-      <Container style={{ paddingTop: '100px' }}>
+      <Container className="page" style={{ paddingTop: '100px' }}>
         <h4>
           <img src={wallet} alt="" className="me-2" />
           Кошелек IC

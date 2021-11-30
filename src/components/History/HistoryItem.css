@@ -8,36 +8,46 @@
     display: block;
     width: 100%;
     height: 100%;
+    -o-object-fit: cover;
     object-fit: cover;
     border-radius: 35px;
+    -webkit-transition: -webkit-transform 223ms;
+    transition: -webkit-transform 223ms;
+    -o-transition: transform 223ms;
     transition: transform 223ms;
+    transition: transform 223ms, -webkit-transform 223ms;
 }
 
 .history-box-image-wrap:hover>img,
 .history-box-image-wrap:focus>img {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
     transform: scale(1.2);
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
 }
 
 .history-box {
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     height: 170px;
     padding: 0 20px;
     background-color: #231f2080;
     border: 1px solid transparent;
     border-radius: 35px;
+    -webkit-transition: 223ms;
+    -o-transition: 223ms;
     transition: 223ms;
 }
-
-
-/* .history-box-image:active,
-.history-box-image:focus,
-.history-box-image:hover {
-    transition: 223ms;
-} */
 
 .history-box-cover {
     position: absolute;
@@ -55,7 +65,11 @@
 }
 
 .history-hashtag {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     padding: 0;
     margin: 0;
@@ -71,30 +85,15 @@
     color: #ffffff;
 }
 
-.history-play {
-    /* width: 100px; */
-    /* height: 100px; */
-    /* background-image: url(../../assets//icons/play-video.svg);
-    background-repeat: no-repeat;
-    background-position: center; */
-}
-
 .history-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
-    /* flex: ; */
-}
-
-
-/* 
-@media (min-width: 768px) and (max-width: 1399px) {
-    .history-name,
-    .history-name-onImage {
-        font-size: 28px;
-    }
-} */
-
-@media (min-width: 768px) {
-    /*  */
 }

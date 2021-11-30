@@ -1,0 +1,94 @@
+.navBurger {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    transition: 223ms;
+    cursor: pointer;
+}
+
+.navBurger:hover,
+.navBurger:focus {
+    transition: 223ms;
+}
+
+.burgerButton {
+    position: absolute;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    border: none;
+    background-color: initial;
+    outline: none;
+    transition: 223ms;
+}
+
+.burgerButton_open {
+    composes: burgerButton;
+    /* left: 230px; */
+}
+
+.navBurgerBar,
+.navBurgerBarClose {
+    position: absolute;
+    height: 4px;
+    width: 25px;
+    background-color: #222222;
+    border-radius: 5px;
+    top: 12px;
+    left: 0;
+    cursor: pointer;
+    transition: 223ms;
+}
+
+.navBurgerBar.dark,
+.navBurgerBarClose.dark {
+    background-color: #ffffff;
+}
+
+.navBurgerBar::after,
+.navBurgerBar::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 4px;
+    width: 25px;
+    background-color: #222222;
+    border-radius: 5px;
+    transition: 223ms;
+}
+
+.navBurgerBar::after {
+    top: 9px;
+}
+
+.navBurgerBar::before {
+    top: -9px;
+}
+
+.navBurgerBarClose {
+    position: absolute;
+    height: 0;
+    transition: 0ms;
+}
+
+.navBurgerBarClose::after,
+.navBurgerBarClose::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    height: 4px;
+    width: 25px;
+    background-color: #222222;
+    border-radius: 5px;
+    transition: 223ms;
+}
+
+.navBurgerBarClose::after {
+    transform: rotate(45deg);
+    transition: 223ms;
+}
+
+.navBurgerBarClose::before {
+    transform: rotate(-45deg);
+    transition: 223ms;
+}

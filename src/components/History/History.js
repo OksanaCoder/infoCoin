@@ -1,15 +1,15 @@
 import React from 'react';
-import { Container, Form, Row } from 'react-bootstrap';
-import '@styles/components/HomeContainer.css';
 import { stories } from '@components/VideoSwiper/stories';
+import { Container, Form, Row } from 'react-bootstrap';
 import HistoryItem from './HistoryItem';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
+import '@styles/components/HomeContainer.css';
 
 const History = () => {
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper page">
         <Container>
           <div className="category-container my-3">
             <h4 className="page-heading">История просмотров</h4>

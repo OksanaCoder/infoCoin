@@ -1,0 +1,25 @@
+.createProd_wrapper {
+    background-color: #ffffff;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.createProd_title_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.createProd_title {
+    font-size: 20px;
+    text-align: center;
+}
+
+.createProd_icon {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+}

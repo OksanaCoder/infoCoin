@@ -1,0 +1,38 @@
+import shortid from 'shortid';
+
+export const devices = [
+  { device: 'iPhone 12 (User)', id: shortid.generate() },
+  { device: 'MacBook Air (User)', id: shortid.generate() },
+  { device: 'IPad Pro (User)', id: shortid.generate() },
+  { device: 'Windows PC (User)', id: shortid.generate() },
+  { device: 'iPhone 12 (User), iPhone 12 (User)', id: shortid.generate() },
+  { device: 'MacBook Air (User)', id: shortid.generate() },
+  { device: 'IPad Pro (User)', id: shortid.generate() },
+  { device: 'Windows PC (User)', id: shortid.generate() },
+  { device: 'iPhone 12 (User)', id: shortid.generate() },
+  { device: 'MacBook Air (User)', id: shortid.generate() },
+  { device: 'IPad Pro (User)', id: shortid.generate() },
+  { device: 'Windows PC (User)', id: shortid.generate() },
+  { device: 'iPhone 12 (User)', id: shortid.generate() },
+  { device: 'MacBook Air (User)', id: shortid.generate() },
+  { device: 'IPad Pro (User)', id: shortid.generate() },
+  { device: 'Windows PC (User)', id: shortid.generate() },
+];
+export const addresses = [
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+  { address: '187.321.21.6:321', id: shortid.generate() },
+];

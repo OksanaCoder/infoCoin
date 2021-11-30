@@ -5,7 +5,7 @@ import ChangeAccount from '../ChangeAccount/index';
 
 const Exit = () => {
   return (
-    <div className="wrapper">
+    <div className="wrapper page">
       <Container className="my-3 d-flex">
         <img className="me-3" src={doorOpen} alt="" />
         <h4>Выход</h4>

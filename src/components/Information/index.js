@@ -8,7 +8,7 @@ import Copyright from '@components/Copyright';
 
 const Information = () => {
   return (
-    <div className="wrapper">
+    <div className="wrapper page">
       <Container className="my-3 d-flex">
         <img className="me-3" src={info} alt="" />
         <h4>Информация</h4>

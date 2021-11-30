@@ -1,6 +1,6 @@
 import React from 'react';
-import { Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { Col } from 'react-bootstrap';
 import { ReactComponent as Play } from '@assets/icons/play-video.svg';
 import './HistoryItem.css';
 
@@ -9,7 +9,7 @@ const HistoryItem = ({ item }) => {
 
   const { name, cover, tags } = item.author;
   return (
-    <Col lg={3} md={4} sm={6} xs={12} className="my-2">
+    <Col lg={3} md={4} sm={6} xs={12} className="my-2 page">
       <Link
         to={{
           pathname: `${'/history'}/${id}`,
@@ -29,8 +29,7 @@ const HistoryItem = ({ item }) => {
                 ))}
               </ul>
             </div>
-            <Play className="history-play" />
-            {/* <span className="history-play"></span> */}
+            <Play />
           </div>
         </div>
       </Link>

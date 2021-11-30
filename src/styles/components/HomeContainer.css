@@ -35,3 +35,10 @@
 .video > div:nth-child(1) > div:nth-child(1) {
     display: none !important;
   }
+
+@media screen and (max-width: 600px) {
+    .container-padding-none {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+}

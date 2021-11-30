@@ -6,7 +6,7 @@ import InformationCenter from '@components/InformationCenter';
 
 const Support = () => {
   return (
-    <div className="wrapper">
+    <div className="wrapper page">
       <Container className="my-3 d-flex">
         <img className="me-3" src={headphones} alt="" />
         <h4>Поддержка</h4>

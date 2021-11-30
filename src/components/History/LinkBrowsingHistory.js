@@ -1,13 +1,13 @@
-import VideoSwiper from '@components/VideoSwiper/VideoSwiper';
 import React from 'react';
-import { Container, Form } from 'react-bootstrap';
 import { useLocation } from 'react-router';
+import { Container, Form } from 'react-bootstrap';
+import { VideoSwiper } from '@components/VideoSwiper';
 
 const LinkBrowsingHistory = () => {
   const { state } = useLocation();
-  console.log(`state`, state);
+
   return (
-    <Container className="wrapper">
+    <Container className="wrapper page">
       <Container className="flex-row-column">
         <div className="category-container my-3">
           <h4 className="page-heading">История просмотров</h4>

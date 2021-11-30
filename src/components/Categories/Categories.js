@@ -10,7 +10,7 @@ import { categories } from './categories-api';
 const Categories = () => {
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper page">
         <Container>
           <div className="category-container my-3">
             <h4 className="page-heading">Категории</h4>
