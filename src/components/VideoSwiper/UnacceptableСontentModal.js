@@ -8,25 +8,27 @@ const UnacceptableСontentModal = ({ videoId, handlerToggleModal }) => {
   const [reportValue, setReportValue] = useState('complain');
   const [continueReport, setContinueReport] = useState(false);
   const [complainValue, setComplainValue] = useState('reason1');
-  // const [showComplain, setShowComplain] = useState(false);
 
   const handleChangeReport = evt => {
-    setReportValue(evt.target.value);
+    setReportValue(evt.currentTarget.value);
   };
 
   const handlerContinue = evt => {
     evt.preventDefault();
-
     setContinueReport(true);
   };
   const handleChangeReason = evt => {
-    setComplainValue(evt.target.value);
+    setComplainValue(evt.currentTarget.value);
   };
   const handleSubmit = evt => {
     evt.preventDefault();
     setContinueReport(null);
     // setShowComplain(true);
-    console.log(`data on submit`, { videoId, reportValue, complainValue });
+    console.log(`modal window data on submit`, {
+      videoId,
+      reportValue,
+      complainValue,
+    });
     // if (showComplain === true) {
     //   //API call
     //   setShowComplain(null);
@@ -45,81 +47,141 @@ const UnacceptableСontentModal = ({ videoId, handlerToggleModal }) => {
 
   return (
     <Portal key={`${videoId + 1}`}>
-      <div className="createProd_wrapper">
-        <div className="createProd_title_wrap">
+      <div className="unwanted_content_wrapper">
+        <div className="unwanted_content_title_wrap">
           <EyeOrange />
-          <h6 className="createProd_title">
+          <h6 className="unwanted_content_title">
             {continueReport !== null ? 'Неприемлимый контент' : 'Спасибо!'}
           </h6>
         </div>
-        <div className="createProd_content">
+        <div className="unwanted_content_content">
           <div>
-            <form action="" method="post">
+            <form action="" method="post" className="unwanted_content_form">
               {continueReport === false && (
                 <>
-                  <ul onChange={handleChangeReport}>
-                    <li key="complain">
+                  <ul
+                    onChange={handleChangeReport}
+                    className="unwanted_content_first_step_list"
+                  >
+                    <li
+                      className="unwanted_content_first_step_item"
+                      key="complain"
+                    >
                       <input
+                        className="unwanted_content_first_step_input"
                         type="radio"
                         name="radio-buttons-group"
                         value={'complain'}
                         id="complain"
                         defaultChecked
                       />
-                      <label htmlFor="complain">Пожаловаться</label>
+                      <label
+                        className="unwanted_content_first_step_label"
+                        htmlFor="complain"
+                      >
+                        Пожаловаться
+                      </label>
                     </li>
-                    <li key="showOff">
+                    <li
+                      className="unwanted_content_first_step_item"
+                      key="showOff"
+                    >
                       <input
+                        className="unwanted_content_first_step_input"
                         type="radio"
                         name="radio-buttons-group"
                         value={'showOff'}
                         id="showOff"
                       />
+                      <label
+                        className="unwanted_content_first_step_label"
+                        htmlFor="showOff"
+                      >
+                        Больше не показывать
+                      </label>
                     </li>
-                    <label htmlFor="showOff">Больше не показывать</label>
                   </ul>
-                  <ul>
-                    <li key="cancel-button" onClick={handlerToggleModal}>
-                      <button>Отменить</button>
+                  <ul className="unwanted_content_buttons">
+                    <li
+                      className="unwanted_content_buttons_item"
+                      key="cancel-button"
+                      onClick={handlerToggleModal}
+                    >
+                      <button className="unwanted_content_button">
+                        Отменить
+                      </button>
                     </li>
-                    <li key="continue-button" onClick={handlerContinue}>
-                      <button>Продолжить</button>
+                    <li
+                      className="unwanted_content_buttons_item"
+                      key="continue-button"
+                      onClick={handlerContinue}
+                    >
+                      <button className="unwanted_content_button">
+                        Продолжить
+                      </button>
                     </li>
                   </ul>
                 </>
               )}
               {continueReport && (
                 <>
-                  <ul onChange={handleChangeReason}>
+                  <ul
+                    className="unwanted_content_second_step_list"
+                    onChange={handleChangeReason}
+                  >
                     {reasons &&
                       reasons.map(reason => (
-                        <>
-                          <li key={reason.id}>
-                            <input
-                              type="radio"
-                              value={reason.reason}
-                              name="reason-buttons"
-                              id={reason.reason}
-                            />
-                            <label htmlFor={reason.reason}>
-                              {reason.reason}
-                            </label>
-                          </li>
-                        </>
+                        <li
+                          className="unwanted_content_second_step_item"
+                          key={reason.id}
+                        >
+                          <input
+                            className="unwanted_content_second_step_input"
+                            type="radio"
+                            value={reason.reason}
+                            name="reason-buttons"
+                            id={reason.reason}
+                          />
+                          <label
+                            className="unwanted_content_second_step_label"
+                            htmlFor={reason.reason}
+                          >
+                            {reason.reason}
+                          </label>
+                        </li>
                       ))}
                   </ul>
-                  <li key="cancel-button" onClick={handlerToggleModal}>
-                    <button>Отменить</button>
-                  </li>
-                  <li key="send-button" onClick={handleSubmit}>
-                    <button>Отправить</button>
-                  </li>
+                  <ul className="unwanted_content_buttons">
+                    <li
+                      className="unwanted_content_buttons_item"
+                      key="cancel-button"
+                      onClick={handlerToggleModal}
+                    >
+                      <button className="unwanted_content_button">
+                        Отменить
+                      </button>
+                    </li>
+                    <li
+                      className="unwanted_content_buttons_item"
+                      key="send-button"
+                      onClick={handleSubmit}
+                    >
+                      <button className="unwanted_content_button">
+                        Отправить
+                      </button>
+                    </li>
+                  </ul>
                 </>
               )}
               {continueReport === null && (
                 <>
-                  <p>Вы помогаете нам сделать Infocoin лучше</p>
-                  <button onClick={handlerToggleModal}>
+                  <p className="unwanted_content_tnx">
+                    Вы помогаете нам сделать Infocoin лучше
+                  </p>
+                  <button
+                    className="unwanted_content_button"
+                    onClick={handlerToggleModal}
+                  >
                     Вернутся на главную
                   </button>
                 </>

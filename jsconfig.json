@@ -12,7 +12,11 @@
       "@pages/*" : ["pages/*"],
       "@fonts/*" : ["fonts/*"],
       "@helpers/*" : ["helpers/*"],
-      "@services/*" : ["services/*"]
+      "@services/*" : ["services/*"],
+      "@redux/*" : ["redux/*"],
+      "@redux_actions/*" : ["redux/actions/*"],
+      "@reducer" : ["redux/reducers/index.js"],
+      "@actions/*" : ["actions/*"]
     }
   },
   "include": [

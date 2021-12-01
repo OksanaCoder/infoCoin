@@ -77,11 +77,19 @@ a {
 
 .icon-small {
     width: 25px;
+    fill: #000000;
+    -webkit-transition: fill 223ms;
+    -o-transition: fill 223ms;
+    transition: fill 223ms;
+    cursor: pointer;
 }
 
-.icon-hover:hover {
+.icon-small-active {
+    width: 25px;
     fill: var(--primary-color);
-    transition: 223ms;
+    -webkit-transition: fill 223ms;
+    -o-transition: fill 223ms;
+    transition: fill 223ms;
     cursor: pointer;
 }
 
