@@ -1,48 +1,47 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from "react";
 import {
   Row,
   Col,
   Modal,
   Button,
   //  Form
-} from 'react-bootstrap';
-import '@styles/components/HomeContainer.css';
-import '@styles/components/VideoSwiper.css';
-import arrowRight from '@assets/icons/arrow-right.svg';
-import { ReactComponent as Share } from '@assets/icons/share.svg';
-import { ReactComponent as Eye } from '@assets/icons/eye.svg';
-import { ReactComponent as Like } from '@assets/icons/heart.svg';
+} from "react-bootstrap";
+import "@styles/components/HomeContainer.css";
+import "@styles/components/VideoSwiper.css";
+import arrowRight from "@assets/icons/arrow-right.svg";
+import { ReactComponent as Share } from "@assets/icons/share.svg";
+import { ReactComponent as Eye } from "@assets/icons/eye.svg";
+import { ReactComponent as Like } from "@assets/icons/heart.svg";
 // import {
 //   FormControl,
 //   Radio,
 //   RadioGroup,
 //   FormControlLabel,
 // } from '@material-ui/core';
-import { DefaultPlayer as Video } from 'react-html5video';
-import 'react-html5video/dist/styles.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.min.css';
-import 'swiper/swiper.min.css';
-import { stories } from './stories';
-import './gt.js';
+import { DefaultPlayer as Video } from "react-html5video";
+import "react-html5video/dist/styles.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
+import { stories } from "./stories";
+import "./gt.js";
 // import Geetest from 'react-geetest';
 // import ReCAPTCHA from "react-google-recaptcha";
-import { Link } from 'react-router-dom';
-import LinkBrowsingHistoryItem from '@components/History/LinkBrowsingHistoryItem';
-import UnacceptableСontentModal from './UnacceptableСontentModal';
+import { Link } from "react-router-dom";
+import LinkBrowsingHistoryItem from "@components/History/LinkBrowsingHistoryItem";
+import UnacceptableСontentModal from "./UnacceptableСontentModal";
 
 import ReCAPTCHA from "react-google-recaptcha";
 
-
-
 const VideoSwiper = ({ props }) => {
-
   const recaptchaRef = React.createRef();
 
   const handleCaptcha = () => {
+    console.log("on handleCaptcha")
     setCaptchaConfirm(true);
     setModalCaptcha(false);
-  }
+  };
+
   // const onSuccess = isSuccess => console.log(isSuccess);
   // const [reportValue, setReportValue] = useState('complain');
   // const [complainValue, setComplainValue] = useState('reason1');
@@ -60,7 +59,7 @@ const VideoSwiper = ({ props }) => {
   const [modalShow, setModalShow] = useState(false);
   const [modalCaptcha, setModalCaptcha] = useState(false);
   const [captchaConfirm, setCaptchaConfirm] = useState(false);
-  const [targetVideo, setTargetVideo] = useState('');
+  const [targetVideo, setTargetVideo] = useState("");
   const handleCloseModal = () => {
     setModalCaptcha(false);
   };
@@ -69,7 +68,7 @@ const VideoSwiper = ({ props }) => {
     setModalCaptcha(false);
   };
 
-  const handlerToggleModal = evt => {
+  const handlerToggleModal = (evt) => {
     evt.preventDefault();
 
     if (evt.target.id === evt.currentTarget.id) {
@@ -77,6 +76,12 @@ const VideoSwiper = ({ props }) => {
       setModalShow(!modalShow);
     }
   };
+
+  useEffect(() => {
+    if (!modalCaptcha && videoRef.current) {
+      videoRef.current.videoEl.play();
+    }
+  }, [modalCaptcha]);
 
   // const playerRef = useRef();
   // const [playing, setPlaying] = useState(true);
@@ -126,19 +131,19 @@ const VideoSwiper = ({ props }) => {
     onChange={onChange}
   
   /> */}
-      
+
       <Swiper
         spaceBetween={50}
         loop={true}
         slidesPerView={1}
         // onSlideChange={() => console.log("slide change")}
-        onSwiper={swiper => (swiperRef.current = swiper)}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         allowSlideNext={false}
         allowSlidePrev={false}
         // noSwiping={true}
       >
         {props === undefined &&
-          storiesData?.map(i => (
+          storiesData?.map((i) => (
             <SwiperSlide key={i.id}>
               {({ isActive }) => (
                 <div className="flex-column-align mob-padding">
@@ -153,7 +158,7 @@ const VideoSwiper = ({ props }) => {
                       <div className="flex-row-center-align">
                         <Link
                           to={{
-                            pathname: `${'/profile'}/${i.author.id}`,
+                            pathname: `${"/profile"}/${i.author.id}`,
                             state: i?.author,
                           }}
                         >
@@ -167,15 +172,15 @@ const VideoSwiper = ({ props }) => {
                           <h2 className="title">
                             <Link
                               to={{
-                                pathname: `${'/profile'}/${i.author.id}`,
+                                pathname: `${"/profile"}/${i.author.id}`,
                                 state: i?.author,
                               }}
                             >
                               {i.author.name}
-                            </Link>{' '}
+                            </Link>{" "}
                           </h2>
                           <ul className="hashtag">
-                            {i.author.tags.map(tag => (
+                            {i.author.tags.map((tag) => (
                               <li key={tag} className="hashtag-item">
                                 {tag}
                               </li>
@@ -198,9 +203,9 @@ const VideoSwiper = ({ props }) => {
                       autoPlay={true}
                       muted={false}
                       loop={false}
-                      controls={['PlayPause', 'Volume']}
+                      controls={["PlayPause", "Volume"]}
                       // poster="https:eba.com.ua/wp-content/uploads/2017/11/rbsport1_mar08_prev-1.jpg"
-                      onDurationChange={event => {
+                      onDurationChange={(event) => {
                         console.log(event.target.duration);
                         // setRandomSecond(Math.floor(Math.random() * duration));
                       }}
@@ -212,12 +217,6 @@ const VideoSwiper = ({ props }) => {
                         setTimeout(() => {
                           videoRef.current.videoEl.pause();
                           setModalCaptcha(true);
-                          // if (window.confirm("Are you a human?")) {
-                          //   videoRef.current.videoEl.play();
-                          // }
-                          if (captchaConfirm) {
-                            videoRef.current.videoEl.play();
-                          }
                         }, 1000 * Math.floor(Math.random() * 3 + 1));
                       }}
                     >
@@ -228,19 +227,21 @@ const VideoSwiper = ({ props }) => {
                         className="video"
                       />
                       <Modal show={modalCaptcha} onHide={handleCloseModal}>
-                        <Modal.Header closeButton>
-                        
-                        </Modal.Header>
+                        <Modal.Header closeButton></Modal.Header>
                         <Modal.Body>
-
-                      <form onSubmit={() => { recaptchaRef.current.execute(); }}> 
-                       <ReCAPTCHA
-                        ref={recaptchaRef}
-                        // size="invisible"
-                        sitekey="6LckU0MdAAAAADWY8V4yEJlDd-ibaCxEw9g7LbtI"
-                        onChange={handleCaptcha}
-                      /> 
-                      </form> 
+                          <form
+                            onSubmit={() => {
+                              recaptchaRef.current.execute();
+                              console.log("on submit")
+                            }}
+                          >
+                            <ReCAPTCHA
+                              ref={recaptchaRef}
+                              // size="invisible"
+                              sitekey="6LckU0MdAAAAADWY8V4yEJlDd-ibaCxEw9g7LbtI"
+                              onChange={handleCaptcha}
+                            />
+                          </form>
                         </Modal.Body>
                         {/* <Modal.Footer>
                           <Button
@@ -262,8 +263,8 @@ const VideoSwiper = ({ props }) => {
                       autoPlay={false}
                       muted={true}
                       loop={false}
-                      controls={['PlayPause', 'Volume']}
-                      onProgress={async data => {
+                      controls={["PlayPause", "Volume"]}
+                      onProgress={async (data) => {
                         // if (
                         //   captchaConfirmed ||
                         //   data.playedSeconds < randomSecond
