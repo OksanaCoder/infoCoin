@@ -11,11 +11,11 @@ const SignupSchema = () =>
       .min(8, 'min', { num: 8 })
       .max(100, 'max', {  num: 100 })
       .required('required'),
-    confirmPassword: Yup.string()
-      .min(8, 'min', { num: 8 })
-      .max(100, 'max', {  num: 100 })
-      .oneOf([Yup.ref('password'), null], 'password do not match')
-      .required('required'),
+    // confirmPassword: Yup.string()
+    //   .min(8, 'min', { num: 8 })
+    //   .max(100, 'max', {  num: 100 })
+    //   .oneOf([Yup.ref('password'), null], 'password do not match')
+    //   .required('required'),
     name: Yup.string()
       .min(1, 'min', { num: 1 })
       .max(16, 'max', {  num: 16 })
@@ -24,7 +24,7 @@ const SignupSchema = () =>
       .matches(/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/, {message: 'phone number is not valid', excludeEmptyString: false})
       .required('required'),     
     acceptTerms: Yup.bool()
-    // .oneOf([true], 'Accept Terms & Conditions is required')
+    .oneOf([true], 'Accept Terms & Conditions is required')
     .required('required'),   
   });
  

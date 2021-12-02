@@ -1,15 +1,15 @@
 /* eslint-disable react/jsx-no-target-blank */
 // import React, {useState} from "react";
-import React from 'react';
+import React from "react";
 // import {Link, useHistory} from "react-router-dom";
-import { Button } from '@material-ui/core';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Input from '@components/Form/Input';
-import SignupSchema from '@helpers/Formik/validation';
-import Formik from '@helpers/Formik';
+import { Button } from "@material-ui/core";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Input from "@components/Form/Input";
+import SignupSchema from "@helpers/Formik/validation";
+import Formik from "@helpers/Formik";
 
-import { signUpAPI } from '@services/api/auth';
+import { signUpAPI } from "@services/api/auth";
 // import PrivacyPopup from "@containers/PrivacyPopup/PrivacyPopup";
 
 const RegisterPage = ({
@@ -18,9 +18,8 @@ const RegisterPage = ({
   pendingAction,
   addNotificationAction,
 }) => {
-  const handleSubmit2 = e => {
-    e.preventDefault();
-    return signUpAPI();
+  const registerUser = (values) => {
+    return signUpAPI(values);
   };
 
   return (
@@ -32,20 +31,20 @@ const RegisterPage = ({
         <div>
           <Formik
             initialValues={{
-              email: '',
-              password: '',
-              name: '',
-              phone: '',
+              email: "",
+              password: "",
+              name: "",
+              phone: "",
             }}
             validationSchema={SignupSchema}
             onSubmit={(values, actions) => {
-              handleSubmit2(values).catch(error => {
+              registerUser(values).catch((error) => {
                 console.log(JSON.stringify(error));
                 actions.setErrors({
-                  email: ' ',
-                  password: ' ',
-                  name: ' ',
-                  phone: ' ',
+                  email: " ",
+                  password: " ",
+                  name: " ",
+                  phone: " ",
                 });
                 // if (error?.notification) {
                 //     addNotificationAction({type: "error", text: error.message});
@@ -63,9 +62,12 @@ const RegisterPage = ({
               handleChange,
               handleSubmit,
               isSubmitting,
+              setValues,
             }) => (
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div>
+                  <div>Errors: {JSON.stringify(errors)}</div>
+                  <div>Values: {JSON.stringify(values)}</div>
                   <Input
                     placeholder="User"
                     label="Имя"
@@ -74,7 +76,7 @@ const RegisterPage = ({
                     name="name"
                     error={errors.name && touched.name}
                     errorText={touched.name && errors.name}
-                    onBlur={() => setFieldTouched('name', true, false)}
+                    onBlur={() => setFieldTouched("name", true, false)}
                     value={values.name}
                     onChange={handleChange}
                   />
@@ -88,7 +90,7 @@ const RegisterPage = ({
                     name="email"
                     error={errors.email && touched.email}
                     errorText={touched.email && errors.email}
-                    onBlur={() => setFieldTouched('email', true, false)}
+                    onBlur={() => setFieldTouched("email", true, false)}
                     value={values.email}
                     onChange={handleChange}
                   />
@@ -100,7 +102,7 @@ const RegisterPage = ({
                     name="phone"
                     error={errors.phone && touched.phone}
                     errorText={touched.phone && errors.phone}
-                    onBlur={() => setFieldTouched('phone', true, false)}
+                    onBlur={() => setFieldTouched("phone", true, false)}
                     value={values.phone}
                     onChange={handleChange}
                   />
@@ -114,37 +116,43 @@ const RegisterPage = ({
                     name="password"
                     error={errors.password && touched.password}
                     errorText={touched.password && errors.password}
-                    onBlur={() => setFieldTouched('password', true, false)}
+                    onBlur={() => setFieldTouched("password", true, false)}
                     value={values.password}
                     onChange={handleChange}
                   />
                   {/* <Input
-                                       placeholder="123456789"
-                                        label="confirm password"
-                                        variant="outlined"
-                                        type="password"
-                                        name="confirmPassword"
-                                        error={errors.confirmPassword && touched.confirmPassword}
-                                        errorText={
-                                            touched.confirmPassword && errors.confirmPassword
-                                        }
-                                        onBlur={() =>
-                                            setFieldTouched("confirmPassword", true, false)
-                                        }
-                                        value={values.confirmPassword}
-                                        onChange={handleChange}
-                                    /> */}
+                      placeholder="123456789"
+                      label="confirm password"
+                      variant="outlined"
+                      type="password"
+                      name="confirmPassword"
+                      error={errors.confirmPassword && touched.confirmPassword}
+                      errorText={
+                          touched.confirmPassword && errors.confirmPassword
+                      }
+                      onBlur={() =>
+                          setFieldTouched("confirmPassword", true, false)
+                      }
+                      value={values.confirmPassword}
+                      onChange={handleChange}
+                  /> */}
                 </div>
-
                 <div
                   className="form-group form-check"
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <FormControlLabel
+                    name="acceptTerms"
+                    onChange={(e) => {
+                      setValues({
+                        ...values,
+                        acceptTerms: e.target.checked,
+                      });
+                    }}
                     className="my-4 text-left"
                     control={<Checkbox className="me-2" />}
                     label=" Я принимаю условия пользования и конфиденциальности"
@@ -156,8 +164,7 @@ const RegisterPage = ({
                   color="primary"
                   variant="contained"
                   className="btn-prime"
-                  // disabled={isSubmitting || isLoadingAuth}
-                  onClick={e => handleSubmit2(e)}
+                  disabled={isSubmitting || isLoadingAuth}
                 >
                   Зарегестрироваться
                 </Button>
