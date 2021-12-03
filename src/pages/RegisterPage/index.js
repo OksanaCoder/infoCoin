@@ -66,8 +66,7 @@ const RegisterPage = ({
             }) => (
               <form onSubmit={handleSubmit}>
                 <div>
-                  <div>Errors: {JSON.stringify(errors)}</div>
-                  <div>Values: {JSON.stringify(values)}</div>
+                 
                   <Input
                     placeholder="User"
                     label="Имя"

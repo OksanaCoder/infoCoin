@@ -12,9 +12,11 @@ const LoginPage = ({
   pendingAction,
   addNotificationAction,
 }) => {
-  const handleSubmit1 = () => {
-    return loginAPI();
+
+  const loginUser = (values) => {
+    return loginAPI(values);
   };
+ 
   return (
     <div>
       <div>
@@ -22,7 +24,7 @@ const LoginPage = ({
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
           onSubmit={(values, actions) => {
-            handleSubmit1(values).catch(error => {
+            loginUser(values).catch(error => {
               console.log(JSON.stringify(error));
               actions.setErrors({
                 email: ' ',
@@ -37,14 +39,16 @@ const LoginPage = ({
           }}
         >
           {({
+            setFieldTouched,
             values,
             errors,
             touched,
             handleChange,
             handleSubmit,
             isSubmitting,
+            setValues,
           }) => (
-            <form>
+            <form onSubmit={handleSubmit}>
               <Input
                 placeholder="email"
                 label="Email"
@@ -76,7 +80,7 @@ const LoginPage = ({
                   type="submit"
                   variant="contained"
                   color="primary"
-                  onClick={handleSubmit1}
+                  disabled={isSubmitting || isLoadingAuth}
                   className="btn-prime my-3"
                 >
                   Войти

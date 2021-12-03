@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const baseURL = 'http://109.87.202.140';
+// const baseURL = 'http://109.87.202.140';
+const baseURL = 'https://dev-api.infocoin.online';
 
 export const loginAPI = ({ password, email }) => {
   return new Promise(async (resolve, reject) => {
