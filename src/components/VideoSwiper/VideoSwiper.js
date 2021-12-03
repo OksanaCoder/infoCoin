@@ -36,12 +36,6 @@ import ReCAPTCHA from "react-google-recaptcha";
 const VideoSwiper = ({ props }) => {
   const recaptchaRef = React.createRef();
 
-  const handleCaptcha = () => {
-    console.log("on handleCaptcha")
-    setCaptchaConfirm(true);
-    setModalCaptcha(false);
-  };
-
   // const onSuccess = isSuccess => console.log(isSuccess);
   // const [reportValue, setReportValue] = useState('complain');
   // const [complainValue, setComplainValue] = useState('reason1');
@@ -58,13 +52,21 @@ const VideoSwiper = ({ props }) => {
   // if modalShow === true, then stop plaing video
   const [modalShow, setModalShow] = useState(false);
   const [modalCaptcha, setModalCaptcha] = useState(false);
-  const [captchaConfirm, setCaptchaConfirm] = useState(false);
+  // const [captchaConfirm, setCaptchaConfirm] = useState(false);
   const [targetVideo, setTargetVideo] = useState("");
-  const handleCloseModal = () => {
-    setModalCaptcha(false);
-  };
-  const handleConfirm = () => {
-    setCaptchaConfirm(true);
+
+  // const handleCloseModal = () => {
+  //   setModalCaptcha(false);
+  // };
+
+  // const handleConfirm = () => {
+  //   setCaptchaConfirm(true);
+  //   setModalCaptcha(false);
+  // };
+
+  const handleCaptcha = () => {
+    // console.log("on handleCaptcha")
+    // setCaptchaConfirm(true);
     setModalCaptcha(false);
   };
 
@@ -226,7 +228,7 @@ const VideoSwiper = ({ props }) => {
                         type="video/MP4"
                         className="video"
                       />
-                      <Modal show={modalCaptcha} onHide={handleCloseModal}>
+                      <Modal show={modalCaptcha}>
                         <Modal.Header closeButton></Modal.Header>
                         <Modal.Body>
                           <form
