@@ -27,23 +27,16 @@ export const loginAPI = ({ password, email }) => {
     }
   });
 };
-export const signUpAPI = ({ email, name, password, phone }) => {
+export const signUpAPI = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
-      let response = await axios.post(
-        `${baseURL}/auth/register`,
-        {
-          email,
-          password,
-          name,
-          phone,
-        },
-        { headers: new Headers({ 'Content-Type': 'application/json' }) },
-      );
+      let response = await axios.post(`${baseURL}/auth/register`, data, {
+        headers: new Headers({ "Content-Type": "application/json" }),
+      });
 
       resolve(response);
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', response.config.data);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", response.config.data);
     } catch (err) {
       reject(err);
     }
