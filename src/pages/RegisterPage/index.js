@@ -33,7 +33,7 @@ const RegisterPage = ({
             initialValues={{
               email: "",
               password: "",
-              name: "",
+              nickname: "",
               phone: "",
             }}
             validationSchema={SignupSchema}
@@ -43,7 +43,7 @@ const RegisterPage = ({
                 actions.setErrors({
                   email: " ",
                   password: " ",
-                  name: " ",
+                  nickname: " ",
                   phone: " ",
                 });
                 // if (error?.notification) {
@@ -66,17 +66,17 @@ const RegisterPage = ({
             }) => (
               <form onSubmit={handleSubmit}>
                 <div>
-                 
+                
                   <Input
                     placeholder="User"
                     label="Имя"
                     variant="outlined"
-                    type="name"
-                    name="name"
-                    error={errors.name && touched.name}
-                    errorText={touched.name && errors.name}
-                    onBlur={() => setFieldTouched("name", true, false)}
-                    value={values.name}
+                    type="nickname"
+                    name="nickname"
+                    error={errors.nickname && touched.nickname}
+                    errorText={touched.nickname && errors.nickname}
+                    onBlur={() => setFieldTouched("nickname", true, false)}
+                    value={values.nickname}
                     onChange={handleChange}
                   />
                 </div>
@@ -97,7 +97,7 @@ const RegisterPage = ({
                     placeholder="+380934343444"
                     label="Номер телефона"
                     variant="outlined"
-                    type="phone"
+                    type="number"
                     name="phone"
                     error={errors.phone && touched.phone}
                     errorText={touched.phone && errors.phone}

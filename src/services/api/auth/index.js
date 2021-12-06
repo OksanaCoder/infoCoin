@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 // const baseURL = 'http://109.87.202.140';
-const baseURL = 'https://dev-api.infocoin.online';
-
+// const baseURL = 'https://dev-api.infocoin.online'
+const baseURL = 'https://dev-api.infocoin.online'
 export const loginAPI = ({ password, email }) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -31,7 +31,7 @@ export const signUpAPI = ({ email, name, password, phone }) => {
   return new Promise(async (resolve, reject) => {
     try {
       let response = await axios.post(
-        `${baseURL}/api/sign-up`,
+        `${baseURL}/auth/register`,
         {
           email,
           password,

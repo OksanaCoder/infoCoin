@@ -14,7 +14,8 @@ const LoginPage = ({
 }) => {
 
   const loginUser = (values) => {
-    return loginAPI(values);
+    return loginAPI(values)
+    .then(() => )
   };
  
   return (
@@ -94,4 +95,16 @@ const LoginPage = ({
   );
 };
 
-export default LoginPage;
+const mapStateToProps = null;
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loginAction: (data) => dispatch(authLogin(data))
+    };
+};
+
+export default compose(
+    withRouter,
+    connect(mapStateToProps, mapDispatchToProps)
+)(LoginPage);
+
