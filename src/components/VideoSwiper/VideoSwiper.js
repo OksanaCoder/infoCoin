@@ -136,7 +136,7 @@ const VideoSwiper = ({ props }) => {
 
       <Swiper
         spaceBetween={50}
-        loop={true}
+        loop={false}
         slidesPerView={1}
         // onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
@@ -240,7 +240,8 @@ const VideoSwiper = ({ props }) => {
                             <ReCAPTCHA
                               ref={recaptchaRef}
                               // size="invisible"
-                              sitekey="6LckU0MdAAAAADWY8V4yEJlDd-ibaCxEw9g7LbtI"
+                              // sitekey="6LckU0MdAAAAADWY8V4yEJlDd-ibaCxEw9g7LbtI"
+                              sitekey="6Le-YIAdAAAAAIzDkgv1NzPW_41ldPH6TR9Ho0En"
                               onChange={handleCaptcha}
                             />
                           </form>

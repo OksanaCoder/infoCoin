@@ -2,25 +2,59 @@ import React from 'react';
 import Input from '@components/Form/Input';
 import Formik from '@helpers/Formik';
 import { LoginSchema } from '@helpers/Formik/validation';
-// import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { loginAPI } from '@services/api/auth';
+import { authLogin } from '@redux/actions/auth'
+import {compose} from 'redux';
+import {connect} from 'react-redux';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { useHistory } from "react-router-dom";
 
 const LoginPage = ({
   isLoadingAuth,
-  loginAction,
-  pendingAction,
-  addNotificationAction,
+  loginAction
 }) => {
-
+  const createNotification = (type) => {
+    switch (type) {
+      case 'info':
+        NotificationManager.info('Проверьте почту чтобы активировать аккаунт!');
+        break;
+      case 'success':
+        console.log('success')
+        NotificationManager.success('Вы успешно вошли !');
+        break;
+      case 'warning':
+        NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+        break;
+      case 'error':
+        NotificationManager.error('Что-то пошло не так', 5000, () => {
+          alert('callback');
+        });
+        break;
+      default: console.log('d');
+    };
+  }
+  let history = useHistory();
   const loginUser = (values) => {
     return loginAPI(values)
-    .then(() => )
+    // .then(()=> loginAction())
+    .then(() => createNotification('info'))
+    // .then(getUsers)
+
+     .then(() => {
+       history.push("/");
+     })
+    .catch((error) => {
+      createNotification('error')
+    })
   };
- 
+
+
   return (
     <div>
       <div>
+      <NotificationContainer/>
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
@@ -95,6 +129,7 @@ const LoginPage = ({
   );
 };
 
+
 const mapStateToProps = null;
 
 const mapDispatchToProps = (dispatch) => {
@@ -107,4 +142,5 @@ export default compose(
     withRouter,
     connect(mapStateToProps, mapDispatchToProps)
 )(LoginPage);
+
 

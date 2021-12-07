@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 // import React, {useState} from "react";
-import React from "react";
+import React, { useState } from "react";
 // import {Link, useHistory} from "react-router-dom";
 import { Button } from "@material-ui/core";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -9,7 +9,7 @@ import Input from "@components/Form/Input";
 import SignupSchema from "@helpers/Formik/validation";
 import Formik from "@helpers/Formik";
 import { connect } from 'react-redux'
-import { signUpAPI, getUsers } from "@services/api/auth";
+import { signUpAPI, getUsers, activateUser } from "@services/api/auth";
 import { authSignUp } from "@redux/actions/auth";
 // import PrivacyPopup from "@containers/PrivacyPopup/PrivacyPopup";
 import 'react-notifications/lib/notifications.css';
@@ -24,38 +24,52 @@ const RegisterPage = ({
 
 
   const createNotification = (type) => {
-    return () => {
-      switch (type) {
-        case 'info':
-          NotificationManager.info('Info message');
-          break;
-        case 'success':
-          NotificationManager.success('Вы успешно зарегистрировались !');
-          break;
-        case 'warning':
-          NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
-          break;
-        case 'error':
-          NotificationManager.error('Что-то пошло не так', 5000, () => {
-            alert('callback');
-          });
-          break;
-        default: console.log('d');
-         
-      };
+    switch (type) {
+      case 'info':
+        NotificationManager.info('Проверьте почту чтобы активировать аккаунт!');
+        break;
+      case 'success':
+        console.log('success')
+        NotificationManager.success('Вы успешно зарегистрировались !');
+        break;
+      case 'warning':
+        NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+        break;
+      case 'error':
+        NotificationManager.error('Что-то пошло не так', 5000, () => {
+          alert('callback');
+        });
+        break;
+      default: console.log('d');
     };
-  };
+  }
 
   let history = useHistory();
+  const [activated, setActivated] = useState(false);
+
+  const [modal, setModal] = useState(true)
 
   const registerUser = (values) => {
     return signUpAPI(values)
-    .then(() => createNotification('success'))
+    .then(() => createNotification('info'))
     .then(registerAction)
     // .then(getUsers)
 
+    // .then(() => {
+    //   history.push("/");
+    // })
+    .catch((error) => {
+      createNotification('error')
+    })
+  };
+  const sendCode = (values) => {
+    return activateUser(values)
+    .then(() => createNotification('success'))
     .then(() => {
       history.push("/");
+    })
+    .catch((error) => {
+      createNotification('error')
     })
   };
 //   <button
@@ -213,6 +227,82 @@ const RegisterPage = ({
               </form>
             )}
           </Formik>
+          <Formik
+            initialValues={{
+              email: "",
+              code: "",
+            }}
+  
+            onSubmit={(values, actions) => {
+              sendCode(values).catch((error) => {
+                console.log(JSON.stringify(error));
+                actions.setErrors({
+                  email: " ",
+                  code: " ",
+    
+                });
+                // if (error?.notification) {
+                //     addNotificationAction({type: "error", text: error.message});
+                //     return
+                // }
+                // console.log(error)
+              });
+            }}
+          >
+            {({
+              setFieldTouched,
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleSubmit,
+              isSubmitting,
+              setValues,
+            }) => (
+              <form onSubmit={handleSubmit}>
+             
+                <div>
+                <Input
+                    placeholder="example.mail@gmail.com"
+                    label="Почта"
+                    variant="outlined"
+                    type="email"
+                    name="email"
+                    error={errors.email && touched.email}
+                    errorText={touched.email && errors.email}
+                    onBlur={() => setFieldTouched("email", true, false)}
+                    value={values.email}
+                    onChange={handleChange}
+                  />
+                  <Input
+                    placeholder="код"
+                    label="Код для активации"
+                    variant="outlined"
+                    type="text"
+                    name="code"
+                    // error={errors.phone && touched.phone}
+                    // errorText={touched.phone && errors.phone}
+                    // onBlur={() => setFieldTouched("phone", true, false)}
+                    value={values.code}
+                    onChange={handleChange}
+                  />
+                </div>
+           
+              
+                {/* {!checkboxValue ? (<span style={{ display: 'flex', color: 'red', justifyContent: 'center', fontSize: '14px'}}>Accept terms of use</span>) : null} */}
+                <Button
+                  type="submit"
+                  color="primary"
+                  variant="contained"
+                  className="btn-prime"
+                  // disabled={isSubmitting || isLoadingAuth}
+                >
+                Активировать аккаунт
+                </Button>
+              </form>
+            )}
+          </Formik>
+          
         </div>
       </div>
     </React.Fragment>

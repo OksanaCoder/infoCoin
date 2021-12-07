@@ -7,7 +7,7 @@ export const loginAPI = ({ password, email }) => {
   return new Promise(async (resolve, reject) => {
     try {
       let response = await axios.post(
-        `${baseURL}/api/sign-in`,
+        `${baseURL}/auth/sign-in`,
         {
           email,
           password,
@@ -32,6 +32,22 @@ export const signUpAPI = (data) => {
     try {
       let response = await axios.post(
         `${baseURL}/auth/register`, data,
+        { headers: new Headers({ 'Content-Type': 'application/json' }) },
+      );
+      resolve(response);
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', response.config.data);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
+export const activateUser = (data) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let response = await axios.post(
+        `${baseURL}/auth/sign-up`, data,
         { headers: new Headers({ 'Content-Type': 'application/json' }) },
       );
       resolve(response);
