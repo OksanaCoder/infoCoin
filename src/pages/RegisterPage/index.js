@@ -12,31 +12,66 @@ import { connect } from 'react-redux'
 import { signUpAPI, getUsers } from "@services/api/auth";
 import { authSignUp } from "@redux/actions/auth";
 // import PrivacyPopup from "@containers/PrivacyPopup/PrivacyPopup";
+import 'react-notifications/lib/notifications.css';
 import { useHistory } from "react-router-dom";
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+
 
 const RegisterPage = ({
   isLoadingAuth,
   registerAction
 }) => {
+
+
+  const createNotification = (type) => {
+    return () => {
+      switch (type) {
+        case 'info':
+          NotificationManager.info('Info message');
+          break;
+        case 'success':
+          NotificationManager.success('Вы успешно зарегистрировались !');
+          break;
+        case 'warning':
+          NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
+          break;
+        case 'error':
+          NotificationManager.error('Что-то пошло не так', 5000, () => {
+            alert('callback');
+          });
+          break;
+        default: console.log('d');
+         
+      };
+    };
+  };
+
   let history = useHistory();
 
   const registerUser = (values) => {
     return signUpAPI(values)
+    .then(() => createNotification('success'))
     .then(registerAction)
-    .then(getUsers)
-    .then(() => console.log('user created!'))
+    // .then(getUsers)
+
     .then(() => {
       history.push("/");
     })
   };
-
+//   <button
+//   onClick={createNotification('success')}>Success
+// </button>
   return (
     <React.Fragment>
+
       {/* {isPrivacyOpened && (
                 <PrivacyPopup togglePrivacyPolicy={() => setPrivacyOpened((p) => !p)}/>
             )} */}
       <div>
         <div>
+       
+
+              <NotificationContainer/>
           <Formik
             initialValues={{
               email: "",
@@ -171,7 +206,7 @@ const RegisterPage = ({
                   color="primary"
                   variant="contained"
                   className="btn-prime"
-                  disabled={isSubmitting || isLoadingAuth}
+                  // disabled={isSubmitting || isLoadingAuth}
                 >
                   Зарегестрироваться
                 </Button>
@@ -186,7 +221,7 @@ const RegisterPage = ({
 
 
 const mapStateToProps = (state) => {
-}
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     loginAction: (data) => dispatch(authSignUp(data)),
