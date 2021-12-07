@@ -20,11 +20,11 @@ const SignupSchema = () =>
       .min(1, 'min', { num: 1 })
       .max(16, 'max', {  num: 16 })
       .required('required'),
-    // phone: Yup.string()
-    //   .matches(/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/, {message: 'phone number is not valid', excludeEmptyString: false})
-    //   .required('required'),     
-      phone: Yup.number()
-      .required('required'), 
+    phone: Yup.string()
+      .matches(/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/, {message: 'phone number is not valid', excludeEmptyString: false})
+      .required('required'),     
+      // phone: Yup.number()
+ 
     acceptTerms: Yup.bool()
     .oneOf([true], 'Accept Terms & Conditions is required')
     .required('required'),   

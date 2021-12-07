@@ -8,18 +8,26 @@ import Checkbox from "@mui/material/Checkbox";
 import Input from "@components/Form/Input";
 import SignupSchema from "@helpers/Formik/validation";
 import Formik from "@helpers/Formik";
-
-import { signUpAPI } from "@services/api/auth";
+import { connect } from 'react-redux'
+import { signUpAPI, getUsers } from "@services/api/auth";
+import { authSignUp } from "@redux/actions/auth";
 // import PrivacyPopup from "@containers/PrivacyPopup/PrivacyPopup";
+import { useHistory } from "react-router-dom";
 
 const RegisterPage = ({
   isLoadingAuth,
-  registerAction,
-  pendingAction,
-  addNotificationAction,
+  registerAction
 }) => {
+  let history = useHistory();
+
   const registerUser = (values) => {
-    return signUpAPI(values);
+    return signUpAPI(values)
+    .then(registerAction)
+    .then(getUsers)
+    .then(() => console.log('user created!'))
+    .then(() => {
+      history.push("/");
+    })
   };
 
   return (
@@ -97,7 +105,7 @@ const RegisterPage = ({
                     placeholder="+380934343444"
                     label="Номер телефона"
                     variant="outlined"
-                    type="number"
+                    type="phone"
                     name="phone"
                     error={errors.phone && touched.phone}
                     errorText={touched.phone && errors.phone}
@@ -176,4 +184,17 @@ const RegisterPage = ({
   );
 };
 
-export default RegisterPage;
+
+const mapStateToProps = (state) => {
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    loginAction: (data) => dispatch(authSignUp(data)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(RegisterPage);
+

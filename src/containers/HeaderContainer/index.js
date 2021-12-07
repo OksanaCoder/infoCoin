@@ -17,6 +17,8 @@ import { ReactComponent as Info } from '@assets/icons/info.svg';
 import { ReactComponent as DoorOpen } from '@assets/icons/door-open.svg';
 import '@styles/components/HeaderContainer.css';
 import { Burger } from '@components/Burger';
+import { connect } from "react-redux";
+
 
 const HeaderContainer = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
@@ -158,4 +160,21 @@ const HeaderContainer = () => {
   );
 };
 
-export default HeaderContainer;
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.authentificationReducer.user,
+
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HeaderContainer);
