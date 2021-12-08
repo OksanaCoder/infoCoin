@@ -45,13 +45,15 @@ const RegisterPage = ({
   }
 
   let history = useHistory();
-  const [activated, setActivated] = useState(false);
-
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
   const [modal, setModal] = useState(true)
 
   const registerUser = (values) => {
     return signUpAPI(values)
-    .then(() => createNotification('info'))
+    .then(() => {
+      createNotification('info')
+      setRegistrationSuccess(true)
+    })
     .then(registerAction)
     // .then(getUsers)
 
@@ -86,7 +88,7 @@ const RegisterPage = ({
        
 
               <NotificationContainer/>
-          <Formik
+          {!registrationSuccess && <Formik
             initialValues={{
               email: "",
               password: "",
@@ -226,8 +228,9 @@ const RegisterPage = ({
                 </Button>
               </form>
             )}
-          </Formik>
-          <Formik
+          </Formik>}
+
+          { registrationSuccess && <Formik
             initialValues={{
               email: "",
               code: "",
@@ -301,7 +304,7 @@ const RegisterPage = ({
                 </Button>
               </form>
             )}
-          </Formik>
+          </Formik>}
           
         </div>
       </div>
@@ -314,7 +317,7 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    loginAction: (data) => dispatch(authSignUp(data)),
+    registerAction: (data) => dispatch(authSignUp(data)),
   };
 };
 
