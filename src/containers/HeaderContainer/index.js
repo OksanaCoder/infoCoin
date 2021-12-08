@@ -20,7 +20,7 @@ import { Burger } from '@components/Burger';
 import { connect } from "react-redux";
 
 
-const HeaderContainer = () => {
+const HeaderContainer = ({user}) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   const handleToggleMenu = evt => {
     evt.preventDefault();
@@ -42,6 +42,9 @@ const HeaderContainer = () => {
             <Nav.Link as="div">
               <Compass className="icon-small" />
             </Nav.Link>
+
+            {user? (
+<>
             <Nav.Link as="div" className="me-2 ms-4">
               <Dropdown onToggle={show => setIsOpenMenu(show)}>
                 <Dropdown.Toggle
@@ -97,10 +100,17 @@ const HeaderContainer = () => {
 
                 <Dropdown.Menu className="user-dropdown-menu">
                   <Dropdown.Item href="#/action-1">
-                    <div className="icon-small circle-user" alt="">
-                      U
-                    </div>
-                    <span>@User122434</span>
+                    {user ? (
+                      <>
+                       <div className="icon-small circle-user" alt="">
+                       U
+                     </div>
+                     <span>@User122434</span>
+                     </>
+
+                    ):(null)}
+                   
+
                     <p className="m-0 version">
                       Баланс IC{' '}
                       <span>
@@ -153,6 +163,15 @@ const HeaderContainer = () => {
                 </Dropdown.Menu>
               </Dropdown>
             </Nav.Link>
+            </>
+          ) : (
+            <Link to="/auth" className="text-decoration-none">
+              <Nav.Link as="div" className="ms-2">
+                  <User className="icon-small" /><small>Вход/Регистрация</small> 
+              </Nav.Link>
+            </Link>
+          )
+          }
           </Nav>
         </Container>
       </Navbar>
