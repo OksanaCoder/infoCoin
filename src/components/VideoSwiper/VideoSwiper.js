@@ -85,6 +85,13 @@ const VideoSwiper = ({ props }) => {
     }
   }, [modalCaptcha]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      videoRef.current?.videoEl.pause();
+      setModalCaptcha(true);
+    }, 1000 * Math.floor(Math.random() * 3 + 1));
+  }, [])
+
   // const playerRef = useRef();
   // const [playing, setPlaying] = useState(true);
   // const [randomSecond, setRandomSecond] = useState(0);
