@@ -68,7 +68,7 @@ const RegisterPage = ({
     return activateUser(values)
     .then(() => createNotification('success'))
     .then(() => {
-      history.push("/");
+      history.push("/login");
     })
     .catch((error) => {
       createNotification('error')
