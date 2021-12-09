@@ -26,11 +26,11 @@ const RegisterPage = ({
   const createNotification = (type) => {
     switch (type) {
       case 'info':
-        NotificationManager.info('Проверьте почту чтобы активировать аккаунт!');
+        NotificationManager.info('Проверьте почту чтобы активировать аккаунт!', 5000);
         break;
       case 'success':
         console.log('success')
-        NotificationManager.success('Вы успешно зарегистрировались !');
+        NotificationManager.success('Вы успешно зарегистрировались !', 5000);
         break;
       case 'warning':
         NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
@@ -77,6 +77,10 @@ const RegisterPage = ({
 //   <button
 //   onClick={createNotification('success')}>Success
 // </button>
+const [typePass, setType] = useState('password')
+  const showPassword = () => {
+      setType((prevState) => (prevState === 'password' ? 'text' : 'password'));
+  }
   return (
     <React.Fragment>
 
@@ -170,7 +174,8 @@ const RegisterPage = ({
                     placeholder="123456789"
                     label="Пароль"
                     variant="outlined"
-                    type="password"
+                    // type="password"
+                    type={typePass}
                     name="password"
                     error={errors.password && touched.password}
                     errorText={touched.password && errors.password}
@@ -178,6 +183,7 @@ const RegisterPage = ({
                     value={values.password}
                     onChange={handleChange}
                   />
+                  <button className={showPassword}>Показать пароль</button>
                   {/* <Input
                       placeholder="123456789"
                       label="confirm password"
