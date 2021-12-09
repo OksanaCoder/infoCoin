@@ -12,37 +12,14 @@ import { connect } from 'react-redux'
 import { signUpAPI, getUsers, activateUser } from "@services/api/auth";
 import { authSignUp } from "@redux/actions/auth";
 // import PrivacyPopup from "@containers/PrivacyPopup/PrivacyPopup";
-import 'react-notifications/lib/notifications.css';
 import { useHistory } from "react-router-dom";
-import {NotificationContainer, NotificationManager} from 'react-notifications';
+import { createNotification } from "App";
 
 
 const RegisterPage = ({
   isLoadingAuth,
   registerAction
 }) => {
-
-
-  const createNotification = (type) => {
-    switch (type) {
-      case 'info':
-        NotificationManager.info('Проверьте почту чтобы активировать аккаунт!', 5000);
-        break;
-      case 'success':
-        console.log('success')
-        NotificationManager.success('Вы успешно зарегистрировались !', 5000);
-        break;
-      case 'warning':
-        NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
-        break;
-      case 'error':
-        NotificationManager.error('Что-то пошло не так', 5000, () => {
-          alert('callback');
-        });
-        break;
-      default: console.log('d');
-    };
-  }
 
   let history = useHistory();
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
@@ -91,7 +68,7 @@ const [typePass, setType] = useState('password')
         <div>
        
 
-              <NotificationContainer/>
+              
           {!registrationSuccess && <Formik
             initialValues={{
               email: "",

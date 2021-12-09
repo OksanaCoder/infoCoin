@@ -8,33 +8,14 @@ import { loginAPI } from '@services/api/auth';
 import { authLogin } from '@redux/actions/auth'
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import {NotificationContainer, NotificationManager} from 'react-notifications';
 import { useHistory } from "react-router-dom";
+import { createNotification } from 'App';
 
 const LoginPage = ({
   isLoadingAuth,
   loginAction
 }) => {
-  const createNotification = (type) => {
-    switch (type) {
-      case 'info':
-        NotificationManager.info('Проверьте почту чтобы активировать аккаунт!');
-        break;
-      case 'success':
-        console.log('success')
-        NotificationManager.success('Вы успешно вошли !');
-        break;
-      case 'warning':
-        NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
-        break;
-      case 'error':
-        NotificationManager.error('Что-то пошло не так', 5000, () => {
-          alert('callback');
-        });
-        break;
-      default: console.log('d');
-    };
-  }
+
   let history = useHistory();
   const loginUser = (values) => {
     return loginAPI(values)
@@ -54,7 +35,6 @@ const LoginPage = ({
   return (
     <div>
       <div>
-      <NotificationContainer/>
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
