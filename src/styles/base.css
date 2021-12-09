@@ -177,7 +177,7 @@ a {
     border: none !important;
     width: 66% !important;
     margin: auto !important;
-    border-radius: 20px !important;
+    /* border-radius: 20px !important; */
 }
 
 .modal-backdrop.show {
@@ -213,7 +213,7 @@ a {
 } */
 
 .btn-prime {
-    background-color: var(--primary-color) !important;
+    background: linear-gradient(95deg, #F8AD1A, #EA5E1F) !important;
     border-radius: 50px !important;
 }
 
@@ -250,17 +250,18 @@ a {
 }
 
 .rh5v-DefaultPlayer_component {
-    background: none;
+    background: none !important;
 }
 
 .rh5v-Volume_button {
     position: absolute;
     top: 40px;
-    left: -3px;
+    right: -710px !important;
+    /* left: -100px !important; */
 }
 
 .rh5v-Volume_icon {
-    padding: 0;
+    padding: 0 !important;
     fill: #000;
     width: 30px;
     height: 30px;
@@ -281,11 +282,12 @@ a {
 }
 
 .rh5v-DefaultPlayer_component:hover .rh5v-DefaultPlayer_controls {
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 .rh5v-DefaultPlayer_controls {
-    opacity: 1;
+    opacity: 1 !important;
+    background-color: transparent !important;
 }
 
 .tab-register,
@@ -295,9 +297,12 @@ a {
 
 @media screen and (min-device-width: 1200px) {
     .rh5v-DefaultPlayer_video {
-        height: 400px;
+        height: 400px !important;
     }
 }
+
+
+/* .rh5v-PlayPause_component:hover {} */
 
 .rh5v-PlayPause_button:hover {
     display: none;

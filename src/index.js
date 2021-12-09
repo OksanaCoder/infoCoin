@@ -5,7 +5,7 @@ import '../src/styles/normalize.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from '@redux/store'
+import store from '@redux/store.js'
 import { Provider } from 'react-redux';
 
 ReactDOM.render(

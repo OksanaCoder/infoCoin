@@ -2,8 +2,19 @@ import React from 'react';
 import { Container, Tab, Row, Nav, Col } from 'react-bootstrap';
 import doorOpen from '@assets/icons/door-open.svg';
 import ChangeAccount from '../ChangeAccount/index';
+import { useHistory } from "react-router-dom";
+
 
 const Exit = () => {
+  let history = useHistory();
+
+  const logOut = () => {
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      history.replace("/auth");
+  };
+
+
   return (
     <div className="wrapper page">
       <Container className="my-3 d-flex">
@@ -21,11 +32,11 @@ const Exit = () => {
             <Col sm={7}>
               <Nav variant="pills" className="flex-column tab">
                 <Nav.Item>
-                  <Nav.Link eventKey="first">Сменить аккаунт</Nav.Link>
+                  <Nav.Link onClick={logOut} eventKey="first">Сменить аккаунт</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                   <Nav.Link>
-                    <button className="delete">Выйти из аккаунта</button>
+                    <button onClick={logOut} className="delete">Выйти из аккаунта</button>
                   </Nav.Link>
                 </Nav.Item>
               </Nav>

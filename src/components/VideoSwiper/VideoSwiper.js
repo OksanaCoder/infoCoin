@@ -30,6 +30,8 @@ import "./gt.js";
 import { Link } from "react-router-dom";
 import LinkBrowsingHistoryItem from "@components/History/LinkBrowsingHistoryItem";
 import UnacceptableСontentModal from "./UnacceptableСontentModal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -91,6 +93,14 @@ const VideoSwiper = ({ props }) => {
       setModalCaptcha(true);
     }, 1000 * Math.floor(Math.random() * 3 + 1));
   }, [])
+
+  const [liked, setLiked] = useState(false)
+
+  const toggleLike = () => {
+    setLiked(!liked)
+  }
+
+  const changeColor = liked ? 'black' : 'orange'
 
   // const playerRef = useRef();
   // const [playing, setPlaying] = useState(true);
@@ -238,6 +248,7 @@ const VideoSwiper = ({ props }) => {
                       <Modal show={modalCaptcha}>
                         <Modal.Header closeButton></Modal.Header>
                         <Modal.Body>
+                          <h6 className='text-center'>Подтвердите что вы здесь</h6>
                           <form
                             onSubmit={() => {
                               recaptchaRef.current.execute();
@@ -287,10 +298,8 @@ const VideoSwiper = ({ props }) => {
                   )}
 
                   <Row className="flex-row-center-align mt-2">
-                    <Col lg={6} md={6} sm={6} xs={6}>
-                      {/* <img src={speaker} alt="" />  */}
-                    </Col>
-                    <Col lg={6} md={6} sm={6} xs={6} className="flex-end">
+                   
+                    <Col lg={6} md={6} sm={6} xs={6} className="flex-start align-items-center text-left d-flex">
                       <Share className="icon-small icon-hover" />
                       <Eye
                         className="icon-small icon-hover ms-4"
@@ -299,7 +308,11 @@ const VideoSwiper = ({ props }) => {
                         onClick={handlerToggleModal}
                       />
 
-                      <Like className="icon-small icon-hover ms-4" />
+                      {/* <Like className="icon-small icon-hover ms-4" /> */}
+                      <FontAwesomeIcon icon={faHeart} onClick={toggleLike} className='ms-3' style={{height: '30px', width: '25px', color: changeColor}}/>
+                    </Col>
+                    <Col lg={6} md={6} sm={6} xs={6}>
+                      {/* <img src={speaker} alt="" />  */}
                     </Col>
                   </Row>
                 </div>
