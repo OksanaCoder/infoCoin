@@ -17,6 +17,7 @@ import { createNotification } from "App";
 
 
 const RegisterPage = ({
+  changeTabByIndex,
   isLoadingAuth,
   registerAction
 }) => {
@@ -45,7 +46,7 @@ const RegisterPage = ({
     return activateUser(values)
     .then(() => createNotification('success'))
     .then(() => {
-      history.push("/login");
+      changeTabByIndex(1)
     })
     .catch((error) => {
       createNotification('error')

@@ -35,6 +35,11 @@ const AuthContainer = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const changeTabByIndex = (newValue) => {
+    setValue(newValue);
+  }
+
   return (
     <div className="auth-wrapper page">
       <div className="flex-col-center py-5">
@@ -53,7 +58,7 @@ const AuthContainer = () => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} className="text-center tab-box">
-        <RegisterPage />
+        <RegisterPage changeTabByIndex={changeTabByIndex}/>
       </TabPanel>
       <TabPanel value={value} index={1} className="text-center tab-box">
         <LoginPage />

@@ -1,6 +1,7 @@
 import { actionTypes } from '@redux_actions/auth'
 
 const initialState = {
+  token: localStorage.getItem('token') || '',
   isAuthentificated: false,
   user: null, //User()
   loaded: false,
@@ -14,6 +15,7 @@ export default function authentificationReducer(state = initialState, action = {
           ...state,
           isAuthentificated: true,
           user: action.data.user,
+          token: action.data.token,
           loaded: true,
           pending: false,
         };
@@ -22,6 +24,7 @@ export default function authentificationReducer(state = initialState, action = {
           ...state,
           isAuthentificated: false,
           user: {},
+          token: '',
           loaded: false,
           pending: false,
         };

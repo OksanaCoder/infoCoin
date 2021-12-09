@@ -19,7 +19,11 @@ const LoginPage = ({
   let history = useHistory();
   const loginUser = (values) => {
     return loginAPI(values)
-    // .then(()=> loginAction())
+    .then((response)=> {
+      if (response.data?.token) {
+        loginAction(response.data)
+      }
+    })
     .then(() => createNotification('info'))
     // .then(getUsers)
 
