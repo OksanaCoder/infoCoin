@@ -91,7 +91,7 @@ const VideoSwiper = ({ props }) => {
     setTimeout(() => {
       videoRef.current?.videoEl.pause();
       setModalCaptcha(true);
-    }, 1000 * Math.floor(Math.random() * (4 - 3 + 1) + 3)); // A random number between 3 and 4
+    }, 1000 * Math.floor(Math.random() * (4 - 3 + 1) + 8)); // A random number between 3 and 4
   }, [])
 
   const [liked, setLiked] = useState(false)
