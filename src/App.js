@@ -10,22 +10,19 @@ export const createNotification = (type) => {
       NotificationManager.info('Проверьте почту чтобы активировать аккаунт!', 5000);
       break;
     case 'success':
-      console.log('success')
       NotificationManager.success('Вы успешно зарегистрировались !', 5000);
       break;
       case 'success-login':
-        console.log('success')
         NotificationManager.success('Вы успешно вошли !', 5000);
         break;
     case 'warning':
       NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
       break;
     case 'error':
-      NotificationManager.error('Что-то пошло не так', 5000, () => {
-        alert('callback');
-      });
+      NotificationManager.error('Помилка', 'Что-то пошло не так', 5000);
       break;
-    default: console.log('d');
+    default:
+      console.log('no match found');
   };
 }
 

@@ -25,11 +25,12 @@ export const loginAPI = ({ password, email }) => {
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', response.config.data);
       localStorage.setItem('name', response.data.name);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      reject(error)
     }
   });
 };
+
 export const signUpAPI = (data) => {
   return new Promise(async (resolve, reject) => {
     try {
