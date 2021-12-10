@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { setAxiosHeaders } from '../../../helpers/http/httpHelper'
 
 // const baseURL = 'http://109.87.202.140';
 // const baseURL = 'https://dev-api.infocoin.online'
 const baseURL = 'https://dev-api.infocoin.online'
+
 export const loginAPI = ({ password, email }) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -19,6 +21,7 @@ export const loginAPI = ({ password, email }) => {
         },
       );
       resolve(response);
+      setAxiosHeaders(response.data.token)
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', response.config.data);
       localStorage.setItem('name', response.data.name);
@@ -63,7 +66,7 @@ export const activateUser = (data) => {
 export const getUsers = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      let response = await axios.get(
+      const response = await axios.get(
         `${baseURL}/api/user`,
         {},
         { headers: new Headers({ 'Content-Type': 'application/json' }) }

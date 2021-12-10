@@ -4,19 +4,33 @@ import Formik from '@helpers/Formik';
 import { LoginSchema } from '@helpers/Formik/validation';
 import { withRouter } from 'react-router-dom';
 import { Button } from '@material-ui/core';
-import { loginAPI } from '@services/api/auth';
+import { getUsers, loginAPI } from '@services/api/auth';
 import { authLogin } from '@redux/actions/auth'
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { createNotification } from 'App';
+import { saveUserAction } from '@redux/actions/user/userActions';
 
 const LoginPage = ({
   isLoadingAuth,
-  loginAction
+  loginAction,
+  saveUser
 }) => {
 
   let history = useHistory();
+
+  const fetchAndSaveUser = () => {
+    getUsers()
+    .then((response) => {
+      console.log(response)
+      // saveUser
+    })
+    .catch((error) => {
+      console.warn(error)
+    })
+  }
+
   const loginUser = (values) => {
     return loginAPI(values)
     .then((response)=> {
@@ -25,8 +39,7 @@ const LoginPage = ({
       }
     })
     .then(() => createNotification('success-login'))
-    // .then(getUsers)
-
+    .then(() =>fetchAndSaveUser())
      .then(() => {
        history.push("/");
      })
@@ -118,7 +131,8 @@ const mapStateToProps = null;
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginAction: (data) => dispatch(authLogin(data))
+        loginAction: (data) => dispatch(authLogin(data)),
+        saveUser: () => dispatch(saveUserAction())
     };
 };
 
