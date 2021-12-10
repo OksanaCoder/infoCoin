@@ -24,7 +24,7 @@ const LoginPage = ({
         loginAction(response.data)
       }
     })
-    .then(() => createNotification('info'))
+    .then(() => createNotification('success-login'))
     // .then(getUsers)
 
      .then(() => {

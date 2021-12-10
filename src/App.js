@@ -13,6 +13,10 @@ export const createNotification = (type) => {
       console.log('success')
       NotificationManager.success('Вы успешно зарегистрировались !', 5000);
       break;
+      case 'success-login':
+        console.log('success')
+        NotificationManager.success('Вы успешно вошли !', 5000);
+        break;
     case 'warning':
       NotificationManager.warning('Warning message', 'Close after 3000ms', 3000);
       break;
