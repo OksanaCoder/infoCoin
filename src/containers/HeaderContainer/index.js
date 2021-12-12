@@ -1,40 +1,39 @@
-import React, { useState } from 'react';
-import { Navbar, Nav, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '@assets/icons/logo.svg';
-import { ReactComponent as Compass } from '@assets/icons/compass.svg';
-import { ReactComponent as User } from '@assets/icons/user.svg';
-import { ReactComponent as History } from '@assets/icons/history.svg';
-import { ReactComponent as Category } from '@assets/icons/buffer.svg';
-import { ReactComponent as Play } from '@assets/icons/play.svg';
-import { ReactComponent as Add } from '@assets/icons/group.svg';
-import { ReactComponent as Wallet } from '@assets/icons/wallet.svg';
-import { ReactComponent as Coins } from '@assets/icons/coins.svg';
-import { ReactComponent as Settings } from '@assets/icons/settings.svg';
-import { ReactComponent as Web } from '@assets/icons/web.svg';
-import { ReactComponent as Headphones } from '@assets/icons/headphones.svg';
-import { ReactComponent as Info } from '@assets/icons/info.svg';
-import { ReactComponent as DoorOpen } from '@assets/icons/door-open.svg';
-import '@styles/components/HeaderContainer.css';
-import { Burger } from '@components/Burger';
-import { connect } from 'react-redux';
-import logoMain from '@assets/icons/logo-home.svg';
+import React, { useState } from "react";
+import { Navbar, Nav, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "@assets/icons/logo.svg";
+import { ReactComponent as Compass } from "@assets/icons/compass.svg";
+import { ReactComponent as User } from "@assets/icons/user.svg";
+import { ReactComponent as History } from "@assets/icons/history.svg";
+import { ReactComponent as Category } from "@assets/icons/buffer.svg";
+import { ReactComponent as Play } from "@assets/icons/play.svg";
+import { ReactComponent as Add } from "@assets/icons/group.svg";
+import { ReactComponent as Wallet } from "@assets/icons/wallet.svg";
+import { ReactComponent as Coins } from "@assets/icons/coins.svg";
+import { ReactComponent as Settings } from "@assets/icons/settings.svg";
+import { ReactComponent as Web } from "@assets/icons/web.svg";
+import { ReactComponent as Headphones } from "@assets/icons/headphones.svg";
+import { ReactComponent as Info } from "@assets/icons/info.svg";
+import { ReactComponent as DoorOpen } from "@assets/icons/door-open.svg";
+import "@styles/components/HeaderContainer.css";
+import { Burger } from "@components/Burger";
+import { connect } from "react-redux";
+import logoMain from "@assets/icons/logo-home.svg";
 import {
   ProSidebar,
   SidebarHeader,
   SidebarFooter,
   SidebarContent,
-} from 'react-pro-sidebar';
-import 'react-pro-sidebar/dist/css/styles.css';
-import facebook from '@assets/icons/facebook.svg'
-import twitter from '@assets/icons/twitter.svg'
-import insta from '@assets/icons/insta.svg'
-import youtube from '@assets/icons/youtube.svg'
-
+} from "react-pro-sidebar";
+import "react-pro-sidebar/dist/css/styles.css";
+import facebook from "@assets/icons/facebook.svg";
+import twitter from "@assets/icons/twitter.svg";
+import insta from "@assets/icons/insta.svg";
+import youtube from "@assets/icons/youtube.svg";
 
 const HeaderContainer = ({ user }) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const handleToggleMenu = evt => {
+  const handleToggleMenu = (evt) => {
     evt.preventDefault();
     evt.target && setIsOpenMenu(!isOpenMenu);
   };
@@ -52,27 +51,27 @@ const HeaderContainer = ({ user }) => {
                 src={logoMain}
                 alt=""
                 width="70%"
-                style={{ marginLeft: '10px', marginTop: '20px' }}
+                style={{ marginLeft: "10px", marginTop: "20px" }}
               />
             </Navbar.Brand>
           </Link>
         </SidebarHeader>
         <SidebarContent>
           {/* <Nav> */}
-          {!user ? (
+          {!!user && !!Object.keys(user).length ? (
             <>
               <Nav.Item>
                 <div className="icon-small circle-user" alt="">
                   U
                 </div>
-                <span>@User122434</span>
+                <span>{user.nickname}</span>
               </Nav.Item>
               <br></br>
               <Link to="/" className="text-decoration-none my-2">
-              <Nav.Item as="p" className="my-2">
-                {/* <Play className="me-3" /> */}
-                Общий Плейлист
-              </Nav.Item>
+                <Nav.Item as="p" className="my-2">
+                  {/* <Play className="me-3" /> */}
+                  Общий Плейлист
+                </Nav.Item>
               </Link>
               <Nav.Item as="p" className="my-2">
                 {/* <Add className="me-3" /> */}
@@ -175,26 +174,28 @@ const HeaderContainer = ({ user }) => {
             </Link>
           )}
         </SidebarContent>
-        <SidebarFooter className='p-4'>
+        <SidebarFooter className="p-4">
           <Row>
-            <Col className='my-3'>
-              <img alt="" src={facebook}/>
+            <Col className="my-3">
+              <img alt="" src={facebook} />
             </Col>
-            <Col className='my-3'>
-              {' '}
+            <Col className="my-3">
+              {" "}
               <img alt="" src={twitter} />
             </Col>
-            <Col className='my-3'>
-              {' '}
+            <Col className="my-3">
+              {" "}
               <img alt="" src={insta} />
             </Col>
-            <Col className='my-3'>
-              {' '}
+            <Col className="my-3">
+              {" "}
               <img alt="" src={youtube} />
             </Col>
           </Row>
           <Row>
-            <small className='text-dark'>Copyright © INFOCOIN INC. 2021 All rights reserved.</small>
+            <small className="text-dark">
+              Copyright © INFOCOIN INC. 2021 All rights reserved.
+            </small>
           </Row>
         </SidebarFooter>
       </ProSidebar>
@@ -349,13 +350,13 @@ const HeaderContainer = ({ user }) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    user: state.authentificationReducer.user,
+    user: state.authenticationReducer.user,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {};
 };
 

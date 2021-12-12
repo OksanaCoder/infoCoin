@@ -23,8 +23,6 @@ export const loginAPI = ({ password, email }) => {
       resolve(response);
       setAxiosHeaders(response.data.token)
       localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', response.config.data);
-      localStorage.setItem('name', response.data.name);
     } catch (error) {
       reject(error)
     }
@@ -39,8 +37,6 @@ export const signUpAPI = (data) => {
         { headers: new Headers({ 'Content-Type': 'application/json' }) },
       );
       resolve(response);
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', response.config.data);
     } catch (err) {
       reject(err);
     }
@@ -55,8 +51,6 @@ export const activateUser = (data) => {
         { headers: new Headers({ 'Content-Type': 'application/json' }) },
       );
       resolve(response);
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('user', response.config.data);
     } catch (err) {
       reject(err);
     }
@@ -73,6 +67,7 @@ export const getUsers = () => {
         { headers: new Headers({ 'Content-Type': 'application/json' }) }
       )
       resolve(response)
+      localStorage.setItem('user', JSON.stringify(response.data))
     } catch (err) {
       reject(err)
     }

@@ -7,7 +7,7 @@ import { Col, Row } from 'react-bootstrap';
 // import Loader from '@components/Loader'
 
 export const PublicRoute = ({ component: Components, ...rest }) => {
-  // const authentificated = useSelector(state => state.authentificationReducer.isAuthentificated);
+  // const authentificated = useSelector(state => state.authenticationReducer.isAuthentificated);
   return (
     <>
       <Route {...rest} render={props => <Components {...props} />} />

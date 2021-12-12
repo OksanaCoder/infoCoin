@@ -10,7 +10,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { createNotification } from 'App';
-import { saveUserAction } from '@redux/actions/user/userActions';
+import { saveUserAction } from '@redux/actions/auth';
 
 const LoginPage = ({
   isLoadingAuth,
@@ -23,8 +23,7 @@ const LoginPage = ({
   const fetchAndSaveUser = () => {
     getUsers()
     .then((response) => {
-      console.log(response)
-      // saveUser
+      saveUser(response.data)
     })
     .catch((error) => {
       console.warn(error)
@@ -132,7 +131,7 @@ const mapStateToProps = null;
 const mapDispatchToProps = (dispatch) => {
     return {
         loginAction: (data) => dispatch(authLogin(data)),
-        saveUser: () => dispatch(saveUserAction())
+        saveUser: (data) => dispatch(saveUserAction(data))
     };
 };
 
