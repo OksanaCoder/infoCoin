@@ -5,20 +5,17 @@
   height: 100vh;
 }
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-  /* background: var(--primary-color) !important; */
-  background: linear-gradient(95deg, #F8AD1A, #EA5E1F) !important;
+  background: var(--primary-color) !important;
   padding: 20px !important;
   border-radius: 10px 10px 0 0 !important;
   color: #fff !important;
   /* width: 50% !important; */
 }
 .css-1aquho2-MuiTabs-indicator {
-  /* background: var(--primary-color) !important; */
   background: var(--primary-color) !important;
 }
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-  /* background: var(--secondary-color) !important; */
-  background: linear-gradient(95deg, #F1B986, #EDA687) !important;
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root. {
+  background: var(--secondary-color) !important;
   /* width: 50% !important; */
 }
 .css-1ujnqem-MuiTabs-root {
@@ -55,8 +52,7 @@
   border: none !important;
 }
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
-  /* background: #f5b978 !important; */
-  background: linear-gradient(95deg, #F1B986, #EDA687) !important;
+  background: #f5b978 !important;
   color: #fff !important;
   border-radius: 10px 10px 0 0 !important;
   padding: 20px !important;

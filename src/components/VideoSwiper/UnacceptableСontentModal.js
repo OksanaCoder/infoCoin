@@ -10,7 +10,7 @@ const UnacceptableСontentModal = ({ videoId, handlerToggleModal }) => {
   const [complainValue, setComplainValue] = useState('reason1');
 
   const handleChangeReport = evt => {
-    setReportValue(evt.currentTarget.value);
+    setReportValue(evt.target.value);
   };
 
   const handlerContinue = evt => {
@@ -18,8 +18,9 @@ const UnacceptableСontentModal = ({ videoId, handlerToggleModal }) => {
     setContinueReport(true);
   };
   const handleChangeReason = evt => {
-    setComplainValue(evt.currentTarget.value);
+    setComplainValue(evt.target.value);
   };
+
   const handleSubmit = evt => {
     evt.preventDefault();
     setContinueReport(null);
@@ -59,15 +60,13 @@ const UnacceptableСontentModal = ({ videoId, handlerToggleModal }) => {
             <form action="" method="post" className="unwanted_content_form">
               {continueReport === false && (
                 <>
-                  <ul
-                    onChange={handleChangeReport}
-                    className="unwanted_content_first_step_list"
-                  >
+                  <ul className="unwanted_content_first_step_list">
                     <li
                       className="unwanted_content_first_step_item"
                       key="complain"
                     >
                       <input
+                        onChange={handleChangeReport}
                         className="unwanted_content_first_step_input"
                         type="radio"
                         name="radio-buttons-group"
@@ -87,6 +86,7 @@ const UnacceptableСontentModal = ({ videoId, handlerToggleModal }) => {
                       key="showOff"
                     >
                       <input
+                        onChange={handleChangeReport}
                         className="unwanted_content_first_step_input"
                         type="radio"
                         name="radio-buttons-group"
@@ -125,15 +125,13 @@ const UnacceptableСontentModal = ({ videoId, handlerToggleModal }) => {
               )}
               {continueReport && (
                 <>
-                  <ul
-                    className="unwanted_content_second_step_list"
-                    onChange={handleChangeReason}
-                  >
+                  <ul className="unwanted_content_second_step_list">
                     {reasons &&
                       reasons.map(reason => (
                         <li
                           className="unwanted_content_second_step_item"
                           key={reason.id}
+                          onChange={handleChangeReason}
                         >
                           <input
                             className="unwanted_content_second_step_input"

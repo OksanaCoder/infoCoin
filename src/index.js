@@ -5,15 +5,15 @@ import '../src/styles/normalize.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from '@redux/store.js'
+import store from '@redux/store.js';
 import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-    <App />
+      <App />
     </BrowserRouter>
-    </Provider>,
+  </Provider>,
   document.getElementById('root'),
 );
 

@@ -2,52 +2,19 @@ import React from 'react';
 import Input from '@components/Form/Input';
 import Formik from '@helpers/Formik';
 import { LoginSchema } from '@helpers/Formik/validation';
-import { withRouter } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
-import { getUsers, loginAPI } from '@services/api/auth';
-import { authLogin } from '@redux/actions/auth'
-import {compose} from 'redux';
-import {connect} from 'react-redux';
-import { useHistory } from "react-router-dom";
-import { createNotification } from 'App';
-import { saveUserAction } from '@redux/actions/auth';
+import { loginAPI } from '@services/api/auth';
 
 const LoginPage = ({
   isLoadingAuth,
   loginAction,
-  saveUser
+  pendingAction,
+  addNotificationAction,
 }) => {
-
-  let history = useHistory();
-
-  const fetchAndSaveUser = () => {
-    getUsers()
-    .then((response) => {
-      saveUser(response.data)
-    })
-    .catch((error) => {
-      console.warn(error)
-    })
-  }
-
-  const loginUser = (values) => {
-    return loginAPI(values)
-    .then((response)=> {
-      if (response.data?.token) {
-        loginAction(response.data)
-      }
-    })
-    .then(() => createNotification('success-login'))
-    .then(() =>fetchAndSaveUser())
-     .then(() => {
-       history.push("/");
-     })
-    .catch((error) => {
-      createNotification('error')
-    })
+  const handleSubmit1 = () => {
+    return loginAPI();
   };
-
-
   return (
     <div>
       <div>
@@ -55,7 +22,7 @@ const LoginPage = ({
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
           onSubmit={(values, actions) => {
-            loginUser(values).catch(error => {
+            handleSubmit1(values).catch(error => {
               console.log(JSON.stringify(error));
               actions.setErrors({
                 email: ' ',
@@ -70,16 +37,14 @@ const LoginPage = ({
           }}
         >
           {({
-            setFieldTouched,
             values,
             errors,
             touched,
             handleChange,
             handleSubmit,
             isSubmitting,
-            setValues,
           }) => (
-            <form onSubmit={handleSubmit}>
+            <form>
               <Input
                 placeholder="email"
                 label="Email"
@@ -111,7 +76,7 @@ const LoginPage = ({
                   type="submit"
                   variant="contained"
                   color="primary"
-                  disabled={isSubmitting || isLoadingAuth}
+                  onClick={handleSubmit1}
                   className="btn-prime my-3"
                 >
                   Войти
@@ -125,19 +90,4 @@ const LoginPage = ({
   );
 };
 
-
-const mapStateToProps = null;
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        loginAction: (data) => dispatch(authLogin(data)),
-        saveUser: (data) => dispatch(saveUserAction(data))
-    };
-};
-
-export default compose(
-    withRouter,
-    connect(mapStateToProps, mapDispatchToProps)
-)(LoginPage);
-
-
+export default LoginPage;

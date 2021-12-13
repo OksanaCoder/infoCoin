@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import RegisterPage from '@pages/RegisterPage';
 import LoginPage from '@pages/LoginPage';
-import logo from '@assets/icons/logo-auth.svg';
+import logo from '@assets/icons/logo.svg';
 import '@styles/components/AuthContainer.css';
 
 function TabPanel(props) {
@@ -35,16 +35,11 @@ const AuthContainer = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
-  const changeTabByIndex = (newValue) => {
-    setValue(newValue);
-  }
-
   return (
     <div className="auth-wrapper page">
-      <div className="flex-col-center py-5">
-        <img src={logo} alt="logo" style={{ margin: 'auto' }} width="200"/>
-        {/* <h1 className="logo text-center">INFOCOIN</h1> */}
+      <div className="flex-col-center py-4">
+        <img src={logo} alt="logo" style={{ margin: 'auto' }} width="50px" />
+        <h1 className="logo text-center">INFOCOIN</h1>
       </div>
 
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -58,7 +53,7 @@ const AuthContainer = () => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} className="text-center tab-box">
-        <RegisterPage changeTabByIndex={changeTabByIndex}/>
+        <RegisterPage />
       </TabPanel>
       <TabPanel value={value} index={1} className="text-center tab-box">
         <LoginPage />

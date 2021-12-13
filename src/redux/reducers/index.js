@@ -1,10 +1,12 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
 // api
-import { authenticationReducer } from "./auth";
+import authentificationReducer from './auth';
+
+
 
 const reducers = combineReducers({
-  authenticationReducer,
-});
+  authentificationReducer
+  })
 
 export default reducers;
