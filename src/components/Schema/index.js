@@ -1,32 +1,16 @@
-import React from 'react';
+import React from "react";
 import {
   Col,
   Container,
   Row,
   // InputGroup, FormControl
-} from 'react-bootstrap';
-import mode from '@assets/icons/schema.svg';
-import '@styles/components/Security.css';
-import { FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
+} from "react-bootstrap";
+import mode from "@assets/icons/schema.svg";
+import "@styles/components/Security.css";
+import { FormControlLabel, Radio, RadioGroup } from "@material-ui/core";
+import { setDarkTheme, setLightTheme } from "@utils/themeUtil";
 
 const Schema = () => {
-    const setDarkMode = () => {
-    // export function setLightTheme() {
-    //   document.getElementsByTagName('body')[0].setAttribute('data-theme', 'light')
-    // }
-    
-    // export function setDarkTheme() {
-    //   document.getElementsByTagName('body')[0].setAttribute('data-theme', 'dark')
-    // }
-      
-     const mode = document.getElementsByTagName('body')[0].setAttribute('data-theme', 'dark');
-     localStorage.setItem('mode', mode)
-    
-  }
-  const setLightMode = () => {
-   const mode = document.getElementsByTagName('body')[0].setAttribute('data-theme', 'light');
-   localStorage.setItem('mode', mode)
-  }
   return (
     <>
       <Container className="m-mob flex-col-center">
@@ -50,7 +34,7 @@ const Schema = () => {
               xs={12}
               className="d-flex justify-content-center flex-column my-3"
             >
-              <img src={mode} alt="" width="100"  onClick={setLightMode}/>
+              <img src={mode} alt="" width="100" onClick={setLightTheme} />
               <FormControlLabel
                 value="light"
                 control={<Radio />}
@@ -64,7 +48,7 @@ const Schema = () => {
               xs={12}
               className="d-flex justify-content-center flex-column my-3"
             >
-              <img src={mode} alt="" width="100"  onClick={setDarkMode}/>
+              <img src={mode} alt="" width="100" onClick={setDarkTheme} />
               <FormControlLabel
                 value="dark"
                 control={<Radio />}
@@ -72,23 +56,21 @@ const Schema = () => {
               />
             </Col>
             <Col
-            lg={12}
-            md={12}
-            sm={12}
-            xs={12}
-            className="d-flex justify-content-center flex-column margin-left"
-          >
-            <img src={mode} alt="" width="100"/>
-            <FormControlLabel
-              value="system"
-              control={<Radio />}
-              label="Системная"
-             
-            />
-          </Col>
+              lg={12}
+              md={12}
+              sm={12}
+              xs={12}
+              className="d-flex justify-content-center flex-column margin-left"
+            >
+              <img src={mode} alt="" width="100" />
+              <FormControlLabel
+                value="system"
+                control={<Radio />}
+                label="Системная"
+              />
+            </Col>
           </Row>
         </RadioGroup>
-       
       </Container>
     </>
   );

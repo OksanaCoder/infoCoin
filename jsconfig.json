@@ -16,7 +16,8 @@
       "@redux/*" : ["redux/*"],
       "@redux_actions/*" : ["redux/actions/*"],
       "@reducer" : ["redux/reducers/index.js"],
-      "@actions/*" : ["actions/*"]
+      "@actions/*" : ["actions/*"],
+      "@utils/*" : ["utils/*"]
     }
   },
   "include": [
