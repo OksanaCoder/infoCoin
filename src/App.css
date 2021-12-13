@@ -49,3 +49,59 @@
 body {
     font-family: 'Segoe UI';
 }
+
+body[data-theme='light'] {
+    --body-bg: white;
+    --color: black;
+    --back-sidebar: white;
+    --main-content-bg: #f1f1f1;;
+  }
+  
+  body[data-theme='dark'] {
+    --body-bg: black;
+    --color: white;
+    --back-sidebar: #231F20;
+    --main-content-bg: #262122;
+  }
+
+ .bg-brown {
+    background-color: var(--main-content-bg) !important; 
+ }
+  .page {
+    background-color: var(--main-content-bg) !important; 
+    color: var(--color) !important; 
+
+  }
+
+  .pro-sidebar > .pro-sidebar-inner {
+    background-color: var(--back-sidebar) !important; 
+  }
+  .main-container {
+      height: 100vh !important;
+  }
+  .accordion__button, 
+  .page-heading, 
+  .custom-select {
+    color: var(--color) !important; 
+  }
+  .nav-item{
+    color: var(--color) !important; 
+  }
+  .icon-mode {
+      background:  var(--color) !important;
+  }
+  .padd-none {
+      padding: 0 !important;
+  }
+  .padd-none-right {
+    padding-right: 0 !important;
+  }
+  /* .row>* {
+      padding: 0 !important;
+  } */
+  /* body {
+    color: var(--color) !important; 
+    background-color: var(--body-bg) !important; 
+   
+  } */
+ 

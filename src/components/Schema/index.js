@@ -10,6 +10,23 @@ import '@styles/components/Security.css';
 import { FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 
 const Schema = () => {
+    const setDarkMode = () => {
+    // export function setLightTheme() {
+    //   document.getElementsByTagName('body')[0].setAttribute('data-theme', 'light')
+    // }
+    
+    // export function setDarkTheme() {
+    //   document.getElementsByTagName('body')[0].setAttribute('data-theme', 'dark')
+    // }
+      
+     const mode = document.getElementsByTagName('body')[0].setAttribute('data-theme', 'dark');
+     localStorage.setItem('mode', mode)
+    
+  }
+  const setLightMode = () => {
+   const mode = document.getElementsByTagName('body')[0].setAttribute('data-theme', 'light');
+   localStorage.setItem('mode', mode)
+  }
   return (
     <>
       <Container className="m-mob flex-col-center">
@@ -33,7 +50,7 @@ const Schema = () => {
               xs={12}
               className="d-flex justify-content-center flex-column my-3"
             >
-              <img src={mode} alt="" width="100" />
+              <img src={mode} alt="" width="100"  onClick={setLightMode}/>
               <FormControlLabel
                 value="light"
                 control={<Radio />}
@@ -47,7 +64,7 @@ const Schema = () => {
               xs={12}
               className="d-flex justify-content-center flex-column my-3"
             >
-              <img src={mode} alt="" width="100" />
+              <img src={mode} alt="" width="100"  onClick={setDarkMode}/>
               <FormControlLabel
                 value="dark"
                 control={<Radio />}
