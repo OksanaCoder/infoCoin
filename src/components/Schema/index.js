@@ -1,16 +1,25 @@
-import React from "react";
-import {
-  Col,
-  Container,
-  Row,
-  // InputGroup, FormControl
-} from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import mode from "@assets/icons/schema.svg";
 import "@styles/components/Security.css";
-import { FormControlLabel, Radio, RadioGroup } from "@material-ui/core";
-import { setDarkTheme, setLightTheme } from "@utils/themeUtil";
+import { setDataTheme, getDataTheme } from "@utils/themeUtil";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
 
 const Schema = () => {
+  const [selectedTheme, setSelectedTheme] = useState("light");
+
+  useEffect(() => {
+    const dataTheme = getDataTheme();
+    setSelectedTheme(dataTheme);
+  }, []);
+
+  function handleThemeChange(value) {
+    setSelectedTheme(value);
+    setDataTheme(value);
+  }
+
   return (
     <>
       <Container className="m-mob flex-col-center">
@@ -21,10 +30,9 @@ const Schema = () => {
         </Row>
         <RadioGroup
           aria-label="report"
-          defaultValue="Пожаловаться"
           name="radio-buttons-group"
-          //    value={complainValue}
-          //    onChange={handleChangeReason}
+          value={selectedTheme}
+          onChange={(e) => handleThemeChange(e.target.value)}
         >
           <Row className="my-5 text-center m-auto row-col-sm">
             <Col
@@ -34,7 +42,12 @@ const Schema = () => {
               xs={12}
               className="d-flex justify-content-center flex-column my-3"
             >
-              <img src={mode} alt="" width="100" onClick={setLightTheme} />
+              <img
+                src={mode}
+                alt=""
+                width="100"
+                onClick={() => handleThemeChange("light")}
+              />
               <FormControlLabel
                 value="light"
                 control={<Radio />}
@@ -48,7 +61,12 @@ const Schema = () => {
               xs={12}
               className="d-flex justify-content-center flex-column my-3"
             >
-              <img src={mode} alt="" width="100" onClick={setDarkTheme} />
+              <img
+                src={mode}
+                alt=""
+                width="100"
+                onClick={() => handleThemeChange("dark")}
+              />
               <FormControlLabel
                 value="dark"
                 control={<Radio />}
@@ -62,7 +80,12 @@ const Schema = () => {
               xs={12}
               className="d-flex justify-content-center flex-column margin-left"
             >
-              <img src={mode} alt="" width="100" />
+              <img
+                src={mode}
+                alt=""
+                width="100"
+                onClick={() => handleThemeChange("system")}
+              />
               <FormControlLabel
                 value="system"
                 control={<Radio />}

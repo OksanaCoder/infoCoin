@@ -1,17 +1,16 @@
-import AppRouter from "@components/AppRouter/index.js";
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
-import { setLightTheme, setDarkTheme } from "@utils/themeUtil";
+import AppRouter from "@components/AppRouter/index.js";
+import { getDataTheme, setDataTheme } from "@utils/themeUtil";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 const App = () => {
+  
   useEffect(() => {
-    if (localStorage.getItem("data-theme") === "dark") {
-      setDarkTheme();
-    } else {
-      setLightTheme();
-    }
+    const dataTheme = getDataTheme();
+    setDataTheme(dataTheme);
   }, []);
+
   return (
     <>
       <AppRouter />
