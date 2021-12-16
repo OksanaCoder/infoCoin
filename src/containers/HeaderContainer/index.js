@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
-import { Navbar, Nav, Container, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '@assets/icons/logo.svg';
-import { ReactComponent as Compass } from '@assets/icons/compass.svg';
-import { ReactComponent as User } from '@assets/icons/user.svg';
-import { ReactComponent as History } from '@assets/icons/history.svg';
-import { ReactComponent as Category } from '@assets/icons/buffer.svg';
-import { ReactComponent as Play } from '@assets/icons/play.svg';
-import { ReactComponent as Add } from '@assets/icons/group.svg';
-import { ReactComponent as Wallet } from '@assets/icons/wallet.svg';
-import { ReactComponent as Coins } from '@assets/icons/coins.svg';
-import { ReactComponent as Settings } from '@assets/icons/settings.svg';
-import { ReactComponent as Web } from '@assets/icons/web.svg';
-import { ReactComponent as Headphones } from '@assets/icons/headphones.svg';
-import { ReactComponent as Info } from '@assets/icons/info.svg';
-import { ReactComponent as DoorOpen } from '@assets/icons/door-open.svg';
-import '@styles/components/HeaderContainer.css';
-import { Burger } from '@components/Burger';
+import React, { useState } from "react";
+import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "@assets/icons/logo.svg";
+import { ReactComponent as Compass } from "@assets/icons/compass.svg";
+import { ReactComponent as User } from "@assets/icons/user.svg";
+import { ReactComponent as History } from "@assets/icons/history.svg";
+import { ReactComponent as Category } from "@assets/icons/buffer.svg";
+import { ReactComponent as Play } from "@assets/icons/play.svg";
+import { ReactComponent as Add } from "@assets/icons/group.svg";
+import { ReactComponent as Wallet } from "@assets/icons/wallet.svg";
+import { ReactComponent as Coins } from "@assets/icons/coins.svg";
+import { ReactComponent as Settings } from "@assets/icons/settings.svg";
+import { ReactComponent as Web } from "@assets/icons/web.svg";
+import { ReactComponent as Headphones } from "@assets/icons/headphones.svg";
+import { ReactComponent as Info } from "@assets/icons/info.svg";
+import { ReactComponent as DoorOpen } from "@assets/icons/door-open.svg";
+import "@styles/components/HeaderContainer.css";
+import { Burger } from "@components/Burger";
+import logoMain from "@assets/icons/logo-home.svg";
+import logoLightMode from '@assets/icons/logo-light.svg'
 
 const HeaderContainer = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  const handleToggleMenu = evt => {
+  const handleToggleMenu = (evt) => {
     evt.preventDefault();
     evt.target && setIsOpenMenu(!isOpenMenu);
   };
@@ -31,7 +33,21 @@ const HeaderContainer = () => {
           <Link to="/" className="text-decoration-none d-flex">
             <Navbar.Brand to="/">
               <h1 className="logo">
-                <Logo className="me-2" />
+                {localStorage.getItem("data-theme") === "dark" ? (
+                  <img
+                    src={logoLightMode}
+                    alt=""
+                    width="70%"
+                    style={{ marginLeft: "42px", marginTop: "20px" }}
+                  />
+                ) : (
+                  <img
+                    src={logoMain}
+                    alt=""
+                    width="70%"
+                    style={{ marginLeft: "42px", marginTop: "20px" }}
+                  />
+                )}
                 INFOCOIN
               </h1>
             </Navbar.Brand>
@@ -41,7 +57,7 @@ const HeaderContainer = () => {
               <Compass className="icon-small" />
             </Nav.Link>
             <Nav.Link as="div" className="me-2 ms-4">
-              <Dropdown onToggle={show => setIsOpenMenu(show)}>
+              <Dropdown onToggle={(show) => setIsOpenMenu(show)}>
                 <Dropdown.Toggle
                   as="div"
                   split="false"
@@ -100,7 +116,7 @@ const HeaderContainer = () => {
                     </div>
                     <span>@User122434</span>
                     <p className="m-0 version">
-                      Баланс IC{' '}
+                      Баланс IC{" "}
                       <span>
                         12.3 <Coins />
                       </span>
