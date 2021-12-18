@@ -1,23 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import mode from "@assets/icons/schema.svg";
 import "@styles/components/Security.css";
-import { setDataTheme, getDataTheme } from "@utils/themeUtil";
+import { setThemeInBrowser } from "@utils/themeUtil";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
+import { useDispatch, useSelector } from "react-redux";
+import { setThemeInRedux } from '@redux_actions/auth'
 
 const Schema = () => {
-  const [selectedTheme, setSelectedTheme] = useState("light");
-
-  useEffect(() => {
-    const dataTheme = getDataTheme();
-    setSelectedTheme(dataTheme);
-  }, []);
+  const dispatch = useDispatch()
+  const theme = useSelector(state => state.authentificationReducer.theme)
 
   function handleThemeChange(value) {
-    setSelectedTheme(value);
-    setDataTheme(value);
+    setThemeInBrowser(value);
+    dispatch(setThemeInRedux({theme: value}))
   }
 
   return (
@@ -31,7 +29,7 @@ const Schema = () => {
         <RadioGroup
           aria-label="report"
           name="radio-buttons-group"
-          value={selectedTheme}
+          value={theme}
           onChange={(e) => handleThemeChange(e.target.value)}
         >
           <Row className="my-5 text-center m-auto row-col-sm">

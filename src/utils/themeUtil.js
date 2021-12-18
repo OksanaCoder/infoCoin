@@ -8,11 +8,7 @@ function setDarkTheme() {
   localStorage.setItem("data-theme", "dark");
 }
 
-export function getDataTheme() {
-  return localStorage.getItem("data-theme") ?? 'light';
-}
-
-export function setDataTheme(value = 'light') {
+export function setThemeInBrowser(value = 'light') {
   switch (value) {
     case "light":
     case "system":

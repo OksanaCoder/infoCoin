@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "@assets/icons/logo.svg";
+// import { ReactComponent as Logo } from "@assets/icons/logo.svg";
 import { ReactComponent as Compass } from "@assets/icons/compass.svg";
 import { ReactComponent as User } from "@assets/icons/user.svg";
 import { ReactComponent as History } from "@assets/icons/history.svg";
@@ -17,23 +17,18 @@ import { ReactComponent as Info } from "@assets/icons/info.svg";
 import { ReactComponent as DoorOpen } from "@assets/icons/door-open.svg";
 import "@styles/components/HeaderContainer.css";
 import { Burger } from "@components/Burger";
+import { useSelector } from "react-redux";
 import logoMain from "@assets/icons/logo-home.svg";
 import logoLightMode from "@assets/icons/logo-light.svg";
-import { getDataTheme } from "@utils/themeUtil";
 
 const HeaderContainer = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
+  const theme = useSelector(state => state.authentificationReducer.theme)
+
   const handleToggleMenu = (evt) => {
     evt.preventDefault();
     evt.target && setIsOpenMenu(!isOpenMenu);
   };
-
-  const [theme, setTheme] = useState("light");
-
-  useEffect(() => {
-    const dataTheme = getDataTheme();
-    setTheme(dataTheme);
-  }, []);
 
   return (
     <>

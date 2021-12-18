@@ -6,7 +6,8 @@ export const actionTypes = {
     // AUTH_FORGOT: 'AUTH_FORGOT',
     // AUTH_RESET: 'AUTH_RESET',
     PENDING: 'AUTH_PENDING',
-    NOT_AUTH: 'NOT_AUTH'
+    NOT_AUTH: 'NOT_AUTH',
+    SET_THEME: 'SET_THEME'
 }
 
 export const authLogin = (data={}) => {
@@ -60,6 +61,13 @@ export const authPending = (data={}) => {
 export const notAuth = (data={}) => {
     return ({
         type: actionTypes.NOT_AUTH,
+        data
+    })
+}
+
+export const setThemeInRedux = (data={}) => {
+    return ({
+        type: actionTypes.SET_THEME,
         data
     })
 }

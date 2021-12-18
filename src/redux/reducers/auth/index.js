@@ -4,7 +4,8 @@ const initialState = {
   isAuthentificated: false,
   user: null, //User()
   loaded: false,
-  pending: false
+  pending: false,
+  theme: localStorage.getItem('data-theme') ?? 'light'
 };
 
 export default function authentificationReducer(state = initialState, action = {}) {
@@ -64,6 +65,11 @@ export default function authentificationReducer(state = initialState, action = {
           ...state,
           pending: false,
           loaded: false
+        }
+      case actionTypes.SET_THEME:
+        return {
+          ...state,
+          theme: action.data.theme
         }
       default:
         return state;
